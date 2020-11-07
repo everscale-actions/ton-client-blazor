@@ -1,0 +1,100 @@
+﻿@page "/crypto"
+@using System.Text.Json
+
+<h1>Module crypto</h1>
+
+<div class="row p-1">
+    <div class="col-lg-8">
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend w-25">
+                <span class="input-group-text w-100">Factorize</span>
+            </div>
+            <input type="text" class="form-control w-25" aria-label="Small" aria-describedby="inputGroup-sizing-sm" @onchange="@Factorize" placeholder="enter something...">
+            <input type="text" readonly class="form-control input-group-append w-50" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="@FactorizeResult">
+        </div>
+    </div>
+</div>
+
+<div class="row p-1">
+    <div class="col-lg-8">
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend w-25">
+                <span class="input-group-text w-100">PublicKeyToString</span>
+            </div>
+            <input type="text" class="form-control w-25" aria-label="Small" aria-describedby="inputGroup-sizing-sm" @onchange="@PublicKeyToString" placeholder="enter something...">
+            <input type="text" readonly class="form-control input-group-append w-50" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="@PublicKeyToStringResult">
+        </div>
+    </div>
+</div>
+
+<div class="row p-1">
+    <div class="col-lg-8">
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend w-25">
+                <span class="input-group-text w-100">Sha512</span>
+            </div>
+            <input type="text" class="form-control w-25" aria-label="Small" aria-describedby="inputGroup-sizing-sm" @onchange="@Sha512" placeholder="enter something...">
+            <input type="text" readonly class="form-control input-group-append w-50" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="@Sha512Result">
+        </div>
+    </div>
+</div>
+
+<div class="row p-1">
+    <div class="col-lg-8">
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend w-25">
+                <span class="input-group-text w-100">Sha256</span>
+            </div>
+            <input type="text" class="form-control w-25" aria-label="Small" aria-describedby="inputGroup-sizing-sm" @onchange="@Sha256" placeholder="enter something...">
+            <input type="text" readonly class="form-control input-group-append w-50" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="@Sha256Result">
+        </div>
+    </div>
+</div>
+
+<div class="row p-1">
+    <div class="col-lg-8">
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend w-25">
+                <span class="input-group-text w-100">Script</span>
+            </div>
+            <input type="password" class="form-control" style="width: 12%" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="password" @onchange="@(async e => { ScryptPassword = e.Value.ToString(); await Scrypt();})">
+            <input type="text" class="form-control" style="width: 13%" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="salt" @onchange="@(async e => { ScryptSalt = e.Value.ToString(); await Scrypt();})">
+            <input type="text" readonly class="form-control input-group-append w-50" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="@ScryptResult">
+        </div>
+    </div>
+</div>
+
+<div class="row p-1">
+    <div class="col-lg-8">
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend w-25">
+                <span class="input-group-text w-100">MnemonicRandomWords</span>
+            </div>
+            <input type="text" readonly class="form-control input-group-append w-75" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="@MnemonicWords">
+        </div>
+    </div>
+</div>
+
+<div class="row p-1">
+    <div class="col-lg-8">
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend w-25">
+                <span class="input-group-text w-100">RandomGenerateBytes</span>
+            </div>
+            <input type="text" readonly class="form-control input-group-append w-75" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="@RandomGenerateBytes">
+        </div>
+    </div>
+</div>
+
+<div class="row p-1">
+    <div class="col-lg-8">
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend w-25">
+                <span class="input-group-text w-100">GetEd25519KeypairRequest</span>
+            </div>
+            <input type="text" readonly class="form-control input-group-append w-75" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="@Ed25519Keypair">
+        </div>
+    </div>
+</div>
+
+<button class="btn btn-primary" @onclick="UpdateAll">Update</button>

@@ -1,0 +1,20 @@
+﻿<div class="progress fixed-bottom" style="height: 5px;">
+    <div class="progress-bar" role="progressbar" style="width: @Progress%" aria-valuenow="@Progress" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+
+@code {
+    [Parameter]
+    public int TotalSteps { get; set; }
+
+    [Parameter]
+    public int CurrentStep
+    {
+        get => _currentStep;
+        set {
+        Progress = (int)((double)value / TotalSteps * 100); 
+        _currentStep = value; }
+    }
+
+    private int Progress { get; set; }
+    private int _currentStep;
+}

@@ -1,0 +1,4211 @@
+﻿namespace QuickType
+{
+    using System;
+    using System.Collections.Generic;
+
+    using System.Globalization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
+
+    public partial class TonConfigData
+    {
+        [JsonProperty("accessKey", NullValueHandling = NullValueHandling.Ignore)]
+        public string AccessKey { get; set; }
+
+        [JsonProperty("log_verbose", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? LogVerbose { get; set; }
+
+        [JsonProperty("messageExpirationTimeout", NullValueHandling = NullValueHandling.Ignore)]
+        public double? MessageExpirationTimeout { get; set; }
+
+        [JsonProperty("messageExpirationTimeoutGrowFactor", NullValueHandling = NullValueHandling.Ignore)]
+        public double? MessageExpirationTimeoutGrowFactor { get; set; }
+
+        [JsonProperty("messageProcessingTimeout", NullValueHandling = NullValueHandling.Ignore)]
+        public double? MessageProcessingTimeout { get; set; }
+
+        [JsonProperty("messageRetriesCount", NullValueHandling = NullValueHandling.Ignore)]
+        public double? MessageRetriesCount { get; set; }
+
+        [JsonProperty("networkTimeout", NullValueHandling = NullValueHandling.Ignore)]
+        public double? NetworkTimeout { get; set; }
+
+        [JsonProperty("outOfSyncThreshold", NullValueHandling = NullValueHandling.Ignore)]
+        public double? OutOfSyncThreshold { get; set; }
+
+        [JsonProperty("servers")]
+        public string[] Servers { get; set; }
+
+        [JsonProperty("useWebSocketForQueries", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? UseWebSocketForQueries { get; set; }
+
+        [JsonProperty("waitForTimeout", NullValueHandling = NullValueHandling.Ignore)]
+        public double? WaitForTimeout { get; set; }
+    }
+
+    public partial class TonEncryptionNaclOptions
+    {
+        [JsonProperty("theirPublicKey", NullValueHandling = NullValueHandling.Ignore)]
+        public string TheirPublicKey { get; set; }
+    }
+
+    public partial class TonKeyPairData
+    {
+        [JsonProperty("public")]
+        public string Public { get; set; }
+
+        [JsonProperty("secret")]
+        public string Secret { get; set; }
+    }
+
+    public partial class TonInputMessage
+    {
+        [JsonProperty("base64", NullValueHandling = NullValueHandling.Ignore)]
+        public string Base64 { get; set; }
+
+        [JsonProperty("hex", NullValueHandling = NullValueHandling.Ignore)]
+        public string Hex { get; set; }
+
+        [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
+        public string Text { get; set; }
+    }
+
+    public partial class TonFactorizeResult
+    {
+        [JsonProperty("a")]
+        public string A { get; set; }
+
+        [JsonProperty("b")]
+        public string B { get; set; }
+    }
+
+    public partial class TonScryptParams
+    {
+        [JsonProperty("dkLen")]
+        public double DkLen { get; set; }
+
+        [JsonProperty("logN")]
+        public double LogN { get; set; }
+
+        [JsonProperty("outputEncoding", NullValueHandling = NullValueHandling.Ignore)]
+        public TonOutputEncodingTypeEnum? OutputEncoding { get; set; }
+
+        [JsonProperty("p")]
+        public double P { get; set; }
+
+        [JsonProperty("password")]
+        public Password Password { get; set; }
+
+        [JsonProperty("r")]
+        public double R { get; set; }
+
+        [JsonProperty("salt")]
+        public Salt Salt { get; set; }
+    }
+
+    public partial class Password
+    {
+        [JsonProperty("base64", NullValueHandling = NullValueHandling.Ignore)]
+        public string Base64 { get; set; }
+
+        [JsonProperty("hex", NullValueHandling = NullValueHandling.Ignore)]
+        public string Hex { get; set; }
+
+        [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
+        public string Text { get; set; }
+    }
+
+    public partial class Salt
+    {
+        [JsonProperty("base64", NullValueHandling = NullValueHandling.Ignore)]
+        public string Base64 { get; set; }
+
+        [JsonProperty("hex", NullValueHandling = NullValueHandling.Ignore)]
+        public string Hex { get; set; }
+
+        [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
+        public string Text { get; set; }
+    }
+
+    public partial class TonNaclBoxParams
+    {
+        [JsonProperty("message")]
+        public TonNaclBoxParamsMessage Message { get; set; }
+
+        [JsonProperty("nonce")]
+        public string Nonce { get; set; }
+
+        [JsonProperty("outputEncoding", NullValueHandling = NullValueHandling.Ignore)]
+        public TonOutputEncodingTypeEnum? OutputEncoding { get; set; }
+
+        [JsonProperty("secretKey")]
+        public string SecretKey { get; set; }
+
+        [JsonProperty("theirPublicKey")]
+        public string TheirPublicKey { get; set; }
+    }
+
+    public partial class TonNaclBoxParamsMessage
+    {
+        [JsonProperty("base64", NullValueHandling = NullValueHandling.Ignore)]
+        public string Base64 { get; set; }
+
+        [JsonProperty("hex", NullValueHandling = NullValueHandling.Ignore)]
+        public string Hex { get; set; }
+
+        [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
+        public string Text { get; set; }
+    }
+
+    public partial class TonNaclSecretBoxParams
+    {
+        [JsonProperty("key")]
+        public string Key { get; set; }
+
+        [JsonProperty("message")]
+        public TonNaclSecretBoxParamsMessage Message { get; set; }
+
+        [JsonProperty("nonce")]
+        public string Nonce { get; set; }
+
+        [JsonProperty("outputEncoding", NullValueHandling = NullValueHandling.Ignore)]
+        public TonOutputEncodingTypeEnum? OutputEncoding { get; set; }
+    }
+
+    public partial class TonNaclSecretBoxParamsMessage
+    {
+        [JsonProperty("base64", NullValueHandling = NullValueHandling.Ignore)]
+        public string Base64 { get; set; }
+
+        [JsonProperty("hex", NullValueHandling = NullValueHandling.Ignore)]
+        public string Hex { get; set; }
+
+        [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
+        public string Text { get; set; }
+    }
+
+    public partial class TonMnemonicWordsParams
+    {
+        [JsonProperty("dictionary", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Dictionary { get; set; }
+
+        [JsonProperty("wordCount", NullValueHandling = NullValueHandling.Ignore)]
+        public double? WordCount { get; set; }
+    }
+
+    public partial class TonMnemonicFromRandomParams
+    {
+        [JsonProperty("dictionary", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Dictionary { get; set; }
+
+        [JsonProperty("wordCount", NullValueHandling = NullValueHandling.Ignore)]
+        public double? WordCount { get; set; }
+    }
+
+    public partial class TonMnemonicFromEntropyParams
+    {
+        [JsonProperty("dictionary", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Dictionary { get; set; }
+
+        [JsonProperty("entropy")]
+        public Entropy Entropy { get; set; }
+
+        [JsonProperty("wordCount", NullValueHandling = NullValueHandling.Ignore)]
+        public double? WordCount { get; set; }
+    }
+
+    public partial class Entropy
+    {
+        [JsonProperty("base64", NullValueHandling = NullValueHandling.Ignore)]
+        public string Base64 { get; set; }
+
+        [JsonProperty("hex", NullValueHandling = NullValueHandling.Ignore)]
+        public string Hex { get; set; }
+
+        [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
+        public string Text { get; set; }
+    }
+
+    public partial class TonMnemonicIsValidParams
+    {
+        [JsonProperty("dictionary", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Dictionary { get; set; }
+
+        [JsonProperty("phrase")]
+        public string Phrase { get; set; }
+
+        [JsonProperty("wordCount", NullValueHandling = NullValueHandling.Ignore)]
+        public double? WordCount { get; set; }
+    }
+
+    public partial class TonMnemonicDeriveSignKeysParams
+    {
+        [JsonProperty("compliant", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Compliant { get; set; }
+
+        [JsonProperty("dictionary", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Dictionary { get; set; }
+
+        [JsonProperty("path", NullValueHandling = NullValueHandling.Ignore)]
+        public string Path { get; set; }
+
+        [JsonProperty("phrase")]
+        public string Phrase { get; set; }
+
+        [JsonProperty("wordCount", NullValueHandling = NullValueHandling.Ignore)]
+        public double? WordCount { get; set; }
+    }
+
+    public partial class TonhdKeyFromMnemonicParams
+    {
+        [JsonProperty("dictionary", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Dictionary { get; set; }
+
+        [JsonProperty("phrase")]
+        public string Phrase { get; set; }
+
+        [JsonProperty("wordCount", NullValueHandling = NullValueHandling.Ignore)]
+        public double? WordCount { get; set; }
+    }
+
+    public partial class TonCryptoChaCha20Result
+    {
+        [JsonProperty("data")]
+        public string Data { get; set; }
+    }
+
+    public partial class TonContractAbiParameter
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TonContractAbiDataItem
+    {
+        [JsonProperty("key")]
+        public double Key { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TonContractAbiFunction
+    {
+        [JsonProperty("inputs")]
+        public TonContractAbiFunctionInput[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("outputs")]
+        public TonContractAbiFunctionOutput[] Outputs { get; set; }
+    }
+
+    public partial class TonContractAbiFunctionInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TonContractAbiFunctionOutput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TonContractAbiEvent
+    {
+        [JsonProperty("inputs")]
+        public TonContractAbiEventInput[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public partial class TonContractAbiEventInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TonContractAbi
+    {
+        [JsonProperty("ABI version")]
+        public double AbiVersion { get; set; }
+
+        [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
+        public TonContractAbiDatum[] Data { get; set; }
+
+        [JsonProperty("events")]
+        public TonContractAbiEventClass[] Events { get; set; }
+
+        [JsonProperty("functions")]
+        public TonContractAbiFunctionClass[] Functions { get; set; }
+
+        [JsonProperty("header", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] Header { get; set; }
+
+        [JsonProperty("setTime", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? SetTime { get; set; }
+    }
+
+    public partial class TonContractAbiDatum
+    {
+        [JsonProperty("key")]
+        public double Key { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TonContractAbiEventClass
+    {
+        [JsonProperty("inputs")]
+        public PurpleInput[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public partial class PurpleInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TonContractAbiFunctionClass
+    {
+        [JsonProperty("inputs")]
+        public FluffyInput[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("outputs")]
+        public PurpleOutput[] Outputs { get; set; }
+    }
+
+    public partial class FluffyInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class PurpleOutput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TonContractPackage
+    {
+        [JsonProperty("abi")]
+        public TonContractPackageAbi Abi { get; set; }
+
+        [JsonProperty("imageBase64")]
+        public string ImageBase64 { get; set; }
+    }
+
+    public partial class TonContractPackageAbi
+    {
+        [JsonProperty("ABI version")]
+        public double AbiVersion { get; set; }
+
+        [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
+        public PurpleDatum[] Data { get; set; }
+
+        [JsonProperty("events")]
+        public PurpleEvent[] Events { get; set; }
+
+        [JsonProperty("functions")]
+        public PurpleFunction[] Functions { get; set; }
+
+        [JsonProperty("header", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] Header { get; set; }
+
+        [JsonProperty("setTime", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? SetTime { get; set; }
+    }
+
+    public partial class PurpleDatum
+    {
+        [JsonProperty("key")]
+        public double Key { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class PurpleEvent
+    {
+        [JsonProperty("inputs")]
+        public TentacledInput[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public partial class TentacledInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class PurpleFunction
+    {
+        [JsonProperty("inputs")]
+        public StickyInput[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("outputs")]
+        public FluffyOutput[] Outputs { get; set; }
+    }
+
+    public partial class StickyInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class FluffyOutput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TonContractLoadParams
+    {
+        [JsonProperty("address")]
+        public string Address { get; set; }
+
+        [JsonProperty("includeImage")]
+        public bool IncludeImage { get; set; }
+    }
+
+    public partial class TonContractLoadResult
+    {
+        [JsonProperty("balanceGrams", NullValueHandling = NullValueHandling.Ignore)]
+        public string BalanceGrams { get; set; }
+
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+        public string Id { get; set; }
+    }
+
+    public partial class TonContractDeployParams
+    {
+        [JsonProperty("constructorHeader")]
+        public object ConstructorHeader { get; set; }
+
+        [JsonProperty("constructorParams")]
+        public object ConstructorParams { get; set; }
+
+        [JsonProperty("initParams")]
+        public object InitParams { get; set; }
+
+        [JsonProperty("keyPair")]
+        public TonContractDeployParamsKeyPair KeyPair { get; set; }
+
+        [JsonProperty("package")]
+        public TonContractDeployParamsPackage Package { get; set; }
+
+        [JsonProperty("signingBox")]
+        public object SigningBox { get; set; }
+
+        [JsonProperty("workchainId", NullValueHandling = NullValueHandling.Ignore)]
+        public double? WorkchainId { get; set; }
+    }
+
+    public partial class TonContractDeployParamsKeyPair
+    {
+        [JsonProperty("public")]
+        public string Public { get; set; }
+
+        [JsonProperty("secret")]
+        public string Secret { get; set; }
+    }
+
+    public partial class TonContractDeployParamsPackage
+    {
+        [JsonProperty("abi")]
+        public PurpleAbi Abi { get; set; }
+
+        [JsonProperty("imageBase64")]
+        public string ImageBase64 { get; set; }
+    }
+
+    public partial class PurpleAbi
+    {
+        [JsonProperty("ABI version")]
+        public double AbiVersion { get; set; }
+
+        [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
+        public FluffyDatum[] Data { get; set; }
+
+        [JsonProperty("events")]
+        public FluffyEvent[] Events { get; set; }
+
+        [JsonProperty("functions")]
+        public FluffyFunction[] Functions { get; set; }
+
+        [JsonProperty("header", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] Header { get; set; }
+
+        [JsonProperty("setTime", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? SetTime { get; set; }
+    }
+
+    public partial class FluffyDatum
+    {
+        [JsonProperty("key")]
+        public double Key { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class FluffyEvent
+    {
+        [JsonProperty("inputs")]
+        public IndigoInput[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public partial class IndigoInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class FluffyFunction
+    {
+        [JsonProperty("inputs")]
+        public IndecentInput[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("outputs")]
+        public TentacledOutput[] Outputs { get; set; }
+    }
+
+    public partial class IndecentInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TentacledOutput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TonContractCalcDeployFeeParams
+    {
+        [JsonProperty("constructorHeader")]
+        public object ConstructorHeader { get; set; }
+
+        [JsonProperty("constructorParams")]
+        public object ConstructorParams { get; set; }
+
+        [JsonProperty("initParams")]
+        public object InitParams { get; set; }
+
+        [JsonProperty("keyPair")]
+        public TonContractCalcDeployFeeParamsKeyPair KeyPair { get; set; }
+
+        [JsonProperty("package")]
+        public TonContractCalcDeployFeeParamsPackage Package { get; set; }
+
+        [JsonProperty("signingBox")]
+        public object SigningBox { get; set; }
+
+        [JsonProperty("workchainId", NullValueHandling = NullValueHandling.Ignore)]
+        public double? WorkchainId { get; set; }
+
+        [JsonProperty("emulateBalance", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? EmulateBalance { get; set; }
+
+        [JsonProperty("newAccount", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? NewAccount { get; set; }
+    }
+
+    public partial class TonContractCalcDeployFeeParamsKeyPair
+    {
+        [JsonProperty("public")]
+        public string Public { get; set; }
+
+        [JsonProperty("secret")]
+        public string Secret { get; set; }
+    }
+
+    public partial class TonContractCalcDeployFeeParamsPackage
+    {
+        [JsonProperty("abi")]
+        public FluffyAbi Abi { get; set; }
+
+        [JsonProperty("imageBase64")]
+        public string ImageBase64 { get; set; }
+    }
+
+    public partial class FluffyAbi
+    {
+        [JsonProperty("ABI version")]
+        public double AbiVersion { get; set; }
+
+        [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
+        public TentacledDatum[] Data { get; set; }
+
+        [JsonProperty("events")]
+        public TentacledEvent[] Events { get; set; }
+
+        [JsonProperty("functions")]
+        public TentacledFunction[] Functions { get; set; }
+
+        [JsonProperty("header", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] Header { get; set; }
+
+        [JsonProperty("setTime", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? SetTime { get; set; }
+    }
+
+    public partial class TentacledDatum
+    {
+        [JsonProperty("key")]
+        public double Key { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TentacledEvent
+    {
+        [JsonProperty("inputs")]
+        public HilariousInput[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public partial class HilariousInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TentacledFunction
+    {
+        [JsonProperty("inputs")]
+        public AmbitiousInput[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("outputs")]
+        public StickyOutput[] Outputs { get; set; }
+    }
+
+    public partial class AmbitiousInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class StickyOutput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TonContractDeployResult
+    {
+        [JsonProperty("address")]
+        public string Address { get; set; }
+
+        [JsonProperty("alreadyDeployed")]
+        public bool AlreadyDeployed { get; set; }
+
+        [JsonProperty("transaction", NullValueHandling = NullValueHandling.Ignore)]
+        public TonContractDeployResultTransaction Transaction { get; set; }
+    }
+
+    public partial class TonContractDeployResultTransaction
+    {
+        [JsonProperty("aborted", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Aborted { get; set; }
+
+        [JsonProperty("account_addr")]
+        public string AccountAddr { get; set; }
+
+        [JsonProperty("action", NullValueHandling = NullValueHandling.Ignore)]
+        public PurpleAction Action { get; set; }
+
+        [JsonProperty("block_id", NullValueHandling = NullValueHandling.Ignore)]
+        public string BlockId { get; set; }
+
+        [JsonProperty("compute", NullValueHandling = NullValueHandling.Ignore)]
+        public PurpleCompute Compute { get; set; }
+
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+        public string Id { get; set; }
+
+        [JsonProperty("in_msg", NullValueHandling = NullValueHandling.Ignore)]
+        public string InMsg { get; set; }
+
+        [JsonProperty("lt", NullValueHandling = NullValueHandling.Ignore)]
+        public string Lt { get; set; }
+
+        [JsonProperty("now", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Now { get; set; }
+
+        [JsonProperty("out_messages", NullValueHandling = NullValueHandling.Ignore)]
+        public PurpleOutMessage[] OutMessages { get; set; }
+
+        [JsonProperty("out_msgs", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] OutMsgs { get; set; }
+
+        [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Status { get; set; }
+
+        [JsonProperty("storage", NullValueHandling = NullValueHandling.Ignore)]
+        public PurpleStorage Storage { get; set; }
+
+        [JsonProperty("tr_type", NullValueHandling = NullValueHandling.Ignore)]
+        public double? TrType { get; set; }
+    }
+
+    public partial class PurpleAction
+    {
+        [JsonProperty("no_funds", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? NoFunds { get; set; }
+
+        [JsonProperty("result_code", NullValueHandling = NullValueHandling.Ignore)]
+        public double? ResultCode { get; set; }
+
+        [JsonProperty("success", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Success { get; set; }
+
+        [JsonProperty("valid", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Valid { get; set; }
+    }
+
+    public partial class PurpleCompute
+    {
+        [JsonProperty("compute_type", NullValueHandling = NullValueHandling.Ignore)]
+        public double? ComputeType { get; set; }
+
+        [JsonProperty("exit_code", NullValueHandling = NullValueHandling.Ignore)]
+        public double? ExitCode { get; set; }
+
+        [JsonProperty("gas_fees", NullValueHandling = NullValueHandling.Ignore)]
+        public string GasFees { get; set; }
+
+        [JsonProperty("skipped_reason", NullValueHandling = NullValueHandling.Ignore)]
+        public double? SkippedReason { get; set; }
+
+        [JsonProperty("success", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Success { get; set; }
+
+        [JsonProperty("total_fwd_fees", NullValueHandling = NullValueHandling.Ignore)]
+        public string TotalFwdFees { get; set; }
+    }
+
+    public partial class PurpleOutMessage
+    {
+        [JsonProperty("body", NullValueHandling = NullValueHandling.Ignore)]
+        public string Body { get; set; }
+
+        [JsonProperty("created_at", NullValueHandling = NullValueHandling.Ignore)]
+        public double? CreatedAt { get; set; }
+
+        [JsonProperty("dst", NullValueHandling = NullValueHandling.Ignore)]
+        public string Dst { get; set; }
+
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+        public string Id { get; set; }
+
+        [JsonProperty("msg_type", NullValueHandling = NullValueHandling.Ignore)]
+        public double? MsgType { get; set; }
+
+        [JsonProperty("src", NullValueHandling = NullValueHandling.Ignore)]
+        public string Src { get; set; }
+
+        [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Status { get; set; }
+    }
+
+    public partial class PurpleStorage
+    {
+        [JsonProperty("status_change", NullValueHandling = NullValueHandling.Ignore)]
+        public double? StatusChange { get; set; }
+
+        [JsonProperty("storage_fees_collected", NullValueHandling = NullValueHandling.Ignore)]
+        public string StorageFeesCollected { get; set; }
+    }
+
+    public partial class TonContractMessage
+    {
+        [JsonProperty("address")]
+        public string Address { get; set; }
+
+        [JsonProperty("expire", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Expire { get; set; }
+
+        [JsonProperty("messageBodyBase64")]
+        public string MessageBodyBase64 { get; set; }
+
+        [JsonProperty("messageId", NullValueHandling = NullValueHandling.Ignore)]
+        public string MessageId { get; set; }
+    }
+
+    public partial class TonMessageProcessingState
+    {
+        [JsonProperty("lastBlockId")]
+        public string LastBlockId { get; set; }
+
+        [JsonProperty("sendingTime")]
+        public double SendingTime { get; set; }
+    }
+
+    public partial class TonContractUnsignedMessage
+    {
+        [JsonProperty("abi")]
+        public TonContractUnsignedMessageAbi Abi { get; set; }
+
+        [JsonProperty("bytesToSignBase64")]
+        public string BytesToSignBase64 { get; set; }
+
+        [JsonProperty("expire", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Expire { get; set; }
+
+        [JsonProperty("unsignedBytesBase64")]
+        public string UnsignedBytesBase64 { get; set; }
+    }
+
+    public partial class TonContractUnsignedMessageAbi
+    {
+        [JsonProperty("ABI version")]
+        public double AbiVersion { get; set; }
+
+        [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
+        public StickyDatum[] Data { get; set; }
+
+        [JsonProperty("events")]
+        public StickyEvent[] Events { get; set; }
+
+        [JsonProperty("functions")]
+        public StickyFunction[] Functions { get; set; }
+
+        [JsonProperty("header", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] Header { get; set; }
+
+        [JsonProperty("setTime", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? SetTime { get; set; }
+    }
+
+    public partial class StickyDatum
+    {
+        [JsonProperty("key")]
+        public double Key { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class StickyEvent
+    {
+        [JsonProperty("inputs")]
+        public CunningInput[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public partial class CunningInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class StickyFunction
+    {
+        [JsonProperty("inputs")]
+        public MagentaInput[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("outputs")]
+        public IndigoOutput[] Outputs { get; set; }
+    }
+
+    public partial class MagentaInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class IndigoOutput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TonContractUnsignedDeployMessage
+    {
+        [JsonProperty("address")]
+        public string Address { get; set; }
+
+        [JsonProperty("signParams")]
+        public TonContractUnsignedDeployMessageSignParams SignParams { get; set; }
+    }
+
+    public partial class TonContractUnsignedDeployMessageSignParams
+    {
+        [JsonProperty("abi")]
+        public TentacledAbi Abi { get; set; }
+
+        [JsonProperty("bytesToSignBase64")]
+        public string BytesToSignBase64 { get; set; }
+
+        [JsonProperty("expire", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Expire { get; set; }
+
+        [JsonProperty("unsignedBytesBase64")]
+        public string UnsignedBytesBase64 { get; set; }
+    }
+
+    public partial class TentacledAbi
+    {
+        [JsonProperty("ABI version")]
+        public double AbiVersion { get; set; }
+
+        [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
+        public IndigoDatum[] Data { get; set; }
+
+        [JsonProperty("events")]
+        public IndigoEvent[] Events { get; set; }
+
+        [JsonProperty("functions")]
+        public IndigoFunction[] Functions { get; set; }
+
+        [JsonProperty("header", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] Header { get; set; }
+
+        [JsonProperty("setTime", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? SetTime { get; set; }
+    }
+
+    public partial class IndigoDatum
+    {
+        [JsonProperty("key")]
+        public double Key { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class IndigoEvent
+    {
+        [JsonProperty("inputs")]
+        public FriskyInput[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public partial class FriskyInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class IndigoFunction
+    {
+        [JsonProperty("inputs")]
+        public MischievousInput[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("outputs")]
+        public IndecentOutput[] Outputs { get; set; }
+    }
+
+    public partial class MischievousInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class IndecentOutput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TonContractUnsignedRunMessage
+    {
+        [JsonProperty("address")]
+        public string Address { get; set; }
+
+        [JsonProperty("functionName")]
+        public string FunctionName { get; set; }
+
+        [JsonProperty("signParams")]
+        public TonContractUnsignedRunMessageSignParams SignParams { get; set; }
+    }
+
+    public partial class TonContractUnsignedRunMessageSignParams
+    {
+        [JsonProperty("abi")]
+        public StickyAbi Abi { get; set; }
+
+        [JsonProperty("bytesToSignBase64")]
+        public string BytesToSignBase64 { get; set; }
+
+        [JsonProperty("expire", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Expire { get; set; }
+
+        [JsonProperty("unsignedBytesBase64")]
+        public string UnsignedBytesBase64 { get; set; }
+    }
+
+    public partial class StickyAbi
+    {
+        [JsonProperty("ABI version")]
+        public double AbiVersion { get; set; }
+
+        [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
+        public IndecentDatum[] Data { get; set; }
+
+        [JsonProperty("events")]
+        public IndecentEvent[] Events { get; set; }
+
+        [JsonProperty("functions")]
+        public IndecentFunction[] Functions { get; set; }
+
+        [JsonProperty("header", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] Header { get; set; }
+
+        [JsonProperty("setTime", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? SetTime { get; set; }
+    }
+
+    public partial class IndecentDatum
+    {
+        [JsonProperty("key")]
+        public double Key { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class IndecentEvent
+    {
+        [JsonProperty("inputs")]
+        public BraggadociousInput[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public partial class BraggadociousInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class IndecentFunction
+    {
+        [JsonProperty("inputs")]
+        public Input1[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("outputs")]
+        public HilariousOutput[] Outputs { get; set; }
+    }
+
+    public partial class Input1
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class HilariousOutput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TonContractDeployMessage
+    {
+        [JsonProperty("address")]
+        public string Address { get; set; }
+
+        [JsonProperty("message")]
+        public TonContractDeployMessageMessage Message { get; set; }
+    }
+
+    public partial class TonContractDeployMessageMessage
+    {
+        [JsonProperty("address")]
+        public string Address { get; set; }
+
+        [JsonProperty("expire", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Expire { get; set; }
+
+        [JsonProperty("messageBodyBase64")]
+        public string MessageBodyBase64 { get; set; }
+
+        [JsonProperty("messageId", NullValueHandling = NullValueHandling.Ignore)]
+        public string MessageId { get; set; }
+    }
+
+    public partial class TonContractRunMessage
+    {
+        [JsonProperty("abi")]
+        public TonContractRunMessageAbi Abi { get; set; }
+
+        [JsonProperty("address")]
+        public string Address { get; set; }
+
+        [JsonProperty("functionName")]
+        public string FunctionName { get; set; }
+
+        [JsonProperty("message")]
+        public TonContractRunMessageMessage Message { get; set; }
+    }
+
+    public partial class TonContractRunMessageAbi
+    {
+        [JsonProperty("ABI version")]
+        public double AbiVersion { get; set; }
+
+        [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
+        public HilariousDatum[] Data { get; set; }
+
+        [JsonProperty("events")]
+        public HilariousEvent[] Events { get; set; }
+
+        [JsonProperty("functions")]
+        public HilariousFunction[] Functions { get; set; }
+
+        [JsonProperty("header", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] Header { get; set; }
+
+        [JsonProperty("setTime", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? SetTime { get; set; }
+    }
+
+    public partial class HilariousDatum
+    {
+        [JsonProperty("key")]
+        public double Key { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class HilariousEvent
+    {
+        [JsonProperty("inputs")]
+        public Input2[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public partial class Input2
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class HilariousFunction
+    {
+        [JsonProperty("inputs")]
+        public Input3[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("outputs")]
+        public AmbitiousOutput[] Outputs { get; set; }
+    }
+
+    public partial class Input3
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class AmbitiousOutput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TonContractRunMessageMessage
+    {
+        [JsonProperty("address")]
+        public string Address { get; set; }
+
+        [JsonProperty("expire", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Expire { get; set; }
+
+        [JsonProperty("messageBodyBase64")]
+        public string MessageBodyBase64 { get; set; }
+
+        [JsonProperty("messageId", NullValueHandling = NullValueHandling.Ignore)]
+        public string MessageId { get; set; }
+    }
+
+    public partial class TonContractCreateSignedMessageParams
+    {
+        [JsonProperty("abi")]
+        public TonContractCreateSignedMessageParamsAbi Abi { get; set; }
+
+        [JsonProperty("publicKeyHex", NullValueHandling = NullValueHandling.Ignore)]
+        public string PublicKeyHex { get; set; }
+
+        [JsonProperty("signBytesBase64")]
+        public string SignBytesBase64 { get; set; }
+
+        [JsonProperty("unsignedBytesBase64")]
+        public string UnsignedBytesBase64 { get; set; }
+    }
+
+    public partial class TonContractCreateSignedMessageParamsAbi
+    {
+        [JsonProperty("ABI version")]
+        public double AbiVersion { get; set; }
+
+        [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
+        public AmbitiousDatum[] Data { get; set; }
+
+        [JsonProperty("events")]
+        public AmbitiousEvent[] Events { get; set; }
+
+        [JsonProperty("functions")]
+        public AmbitiousFunction[] Functions { get; set; }
+
+        [JsonProperty("header", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] Header { get; set; }
+
+        [JsonProperty("setTime", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? SetTime { get; set; }
+    }
+
+    public partial class AmbitiousDatum
+    {
+        [JsonProperty("key")]
+        public double Key { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class AmbitiousEvent
+    {
+        [JsonProperty("inputs")]
+        public Input4[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public partial class Input4
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class AmbitiousFunction
+    {
+        [JsonProperty("inputs")]
+        public Input5[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("outputs")]
+        public CunningOutput[] Outputs { get; set; }
+    }
+
+    public partial class Input5
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class CunningOutput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TonContractCreateSignedDeployMessageParams
+    {
+        [JsonProperty("publicKeyHex", NullValueHandling = NullValueHandling.Ignore)]
+        public string PublicKeyHex { get; set; }
+
+        [JsonProperty("signBytesBase64")]
+        public string SignBytesBase64 { get; set; }
+
+        [JsonProperty("unsignedMessage")]
+        public TonContractCreateSignedDeployMessageParamsUnsignedMessage UnsignedMessage { get; set; }
+    }
+
+    public partial class TonContractCreateSignedDeployMessageParamsUnsignedMessage
+    {
+        [JsonProperty("address")]
+        public string Address { get; set; }
+
+        [JsonProperty("signParams")]
+        public PurpleSignParams SignParams { get; set; }
+    }
+
+    public partial class PurpleSignParams
+    {
+        [JsonProperty("abi")]
+        public IndigoAbi Abi { get; set; }
+
+        [JsonProperty("bytesToSignBase64")]
+        public string BytesToSignBase64 { get; set; }
+
+        [JsonProperty("expire", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Expire { get; set; }
+
+        [JsonProperty("unsignedBytesBase64")]
+        public string UnsignedBytesBase64 { get; set; }
+    }
+
+    public partial class IndigoAbi
+    {
+        [JsonProperty("ABI version")]
+        public double AbiVersion { get; set; }
+
+        [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
+        public CunningDatum[] Data { get; set; }
+
+        [JsonProperty("events")]
+        public CunningEvent[] Events { get; set; }
+
+        [JsonProperty("functions")]
+        public CunningFunction[] Functions { get; set; }
+
+        [JsonProperty("header", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] Header { get; set; }
+
+        [JsonProperty("setTime", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? SetTime { get; set; }
+    }
+
+    public partial class CunningDatum
+    {
+        [JsonProperty("key")]
+        public double Key { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class CunningEvent
+    {
+        [JsonProperty("inputs")]
+        public Input6[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public partial class Input6
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class CunningFunction
+    {
+        [JsonProperty("inputs")]
+        public Input7[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("outputs")]
+        public MagentaOutput[] Outputs { get; set; }
+    }
+
+    public partial class Input7
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class MagentaOutput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TonContractCreateSignedRunMessageParams
+    {
+        [JsonProperty("publicKeyHex", NullValueHandling = NullValueHandling.Ignore)]
+        public string PublicKeyHex { get; set; }
+
+        [JsonProperty("signBytesBase64")]
+        public string SignBytesBase64 { get; set; }
+
+        [JsonProperty("unsignedMessage")]
+        public TonContractCreateSignedRunMessageParamsUnsignedMessage UnsignedMessage { get; set; }
+    }
+
+    public partial class TonContractCreateSignedRunMessageParamsUnsignedMessage
+    {
+        [JsonProperty("address")]
+        public string Address { get; set; }
+
+        [JsonProperty("functionName")]
+        public string FunctionName { get; set; }
+
+        [JsonProperty("signParams")]
+        public FluffySignParams SignParams { get; set; }
+    }
+
+    public partial class FluffySignParams
+    {
+        [JsonProperty("abi")]
+        public IndecentAbi Abi { get; set; }
+
+        [JsonProperty("bytesToSignBase64")]
+        public string BytesToSignBase64 { get; set; }
+
+        [JsonProperty("expire", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Expire { get; set; }
+
+        [JsonProperty("unsignedBytesBase64")]
+        public string UnsignedBytesBase64 { get; set; }
+    }
+
+    public partial class IndecentAbi
+    {
+        [JsonProperty("ABI version")]
+        public double AbiVersion { get; set; }
+
+        [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
+        public MagentaDatum[] Data { get; set; }
+
+        [JsonProperty("events")]
+        public MagentaEvent[] Events { get; set; }
+
+        [JsonProperty("functions")]
+        public MagentaFunction[] Functions { get; set; }
+
+        [JsonProperty("header", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] Header { get; set; }
+
+        [JsonProperty("setTime", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? SetTime { get; set; }
+    }
+
+    public partial class MagentaDatum
+    {
+        [JsonProperty("key")]
+        public double Key { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class MagentaEvent
+    {
+        [JsonProperty("inputs")]
+        public Input8[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public partial class Input8
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class MagentaFunction
+    {
+        [JsonProperty("inputs")]
+        public Input9[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("outputs")]
+        public FriskyOutput[] Outputs { get; set; }
+    }
+
+    public partial class Input9
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class FriskyOutput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TonContractRunParams
+    {
+        [JsonProperty("abi")]
+        public TonContractRunParamsAbi Abi { get; set; }
+
+        [JsonProperty("address")]
+        public string Address { get; set; }
+
+        [JsonProperty("functionName")]
+        public string FunctionName { get; set; }
+
+        [JsonProperty("header")]
+        public object Header { get; set; }
+
+        [JsonProperty("input")]
+        public object Input { get; set; }
+
+        [JsonProperty("keyPair", NullValueHandling = NullValueHandling.Ignore)]
+        public TonContractRunParamsKeyPair KeyPair { get; set; }
+
+        [JsonProperty("signingBox")]
+        public object SigningBox { get; set; }
+    }
+
+    public partial class TonContractRunParamsAbi
+    {
+        [JsonProperty("ABI version")]
+        public double AbiVersion { get; set; }
+
+        [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
+        public FriskyDatum[] Data { get; set; }
+
+        [JsonProperty("events")]
+        public FriskyEvent[] Events { get; set; }
+
+        [JsonProperty("functions")]
+        public FriskyFunction[] Functions { get; set; }
+
+        [JsonProperty("header", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] Header { get; set; }
+
+        [JsonProperty("setTime", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? SetTime { get; set; }
+    }
+
+    public partial class FriskyDatum
+    {
+        [JsonProperty("key")]
+        public double Key { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class FriskyEvent
+    {
+        [JsonProperty("inputs")]
+        public Input10[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public partial class Input10
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class FriskyFunction
+    {
+        [JsonProperty("inputs")]
+        public Input11[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("outputs")]
+        public MischievousOutput[] Outputs { get; set; }
+    }
+
+    public partial class Input11
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class MischievousOutput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TonContractRunParamsKeyPair
+    {
+        [JsonProperty("public")]
+        public string Public { get; set; }
+
+        [JsonProperty("secret")]
+        public string Secret { get; set; }
+    }
+
+    public partial class TonContractAccountWaitParams
+    {
+        [JsonProperty("timeout", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Timeout { get; set; }
+
+        [JsonProperty("transactionLt", NullValueHandling = NullValueHandling.Ignore)]
+        public string TransactionLt { get; set; }
+    }
+
+    public partial class TonContractCalcRunFeeParams
+    {
+        [JsonProperty("abi")]
+        public TonContractCalcRunFeeParamsAbi Abi { get; set; }
+
+        [JsonProperty("address")]
+        public string Address { get; set; }
+
+        [JsonProperty("functionName")]
+        public string FunctionName { get; set; }
+
+        [JsonProperty("header")]
+        public object Header { get; set; }
+
+        [JsonProperty("input")]
+        public object Input { get; set; }
+
+        [JsonProperty("keyPair", NullValueHandling = NullValueHandling.Ignore)]
+        public TonContractCalcRunFeeParamsKeyPair KeyPair { get; set; }
+
+        [JsonProperty("signingBox")]
+        public object SigningBox { get; set; }
+
+        [JsonProperty("emulateBalance", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? EmulateBalance { get; set; }
+
+        [JsonProperty("waitParams", NullValueHandling = NullValueHandling.Ignore)]
+        public TonContractCalcRunFeeParamsWaitParams WaitParams { get; set; }
+    }
+
+    public partial class TonContractCalcRunFeeParamsAbi
+    {
+        [JsonProperty("ABI version")]
+        public double AbiVersion { get; set; }
+
+        [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
+        public MischievousDatum[] Data { get; set; }
+
+        [JsonProperty("events")]
+        public MischievousEvent[] Events { get; set; }
+
+        [JsonProperty("functions")]
+        public MischievousFunction[] Functions { get; set; }
+
+        [JsonProperty("header", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] Header { get; set; }
+
+        [JsonProperty("setTime", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? SetTime { get; set; }
+    }
+
+    public partial class MischievousDatum
+    {
+        [JsonProperty("key")]
+        public double Key { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class MischievousEvent
+    {
+        [JsonProperty("inputs")]
+        public Input12[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public partial class Input12
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class MischievousFunction
+    {
+        [JsonProperty("inputs")]
+        public Input13[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("outputs")]
+        public BraggadociousOutput[] Outputs { get; set; }
+    }
+
+    public partial class Input13
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class BraggadociousOutput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TonContractCalcRunFeeParamsKeyPair
+    {
+        [JsonProperty("public")]
+        public string Public { get; set; }
+
+        [JsonProperty("secret")]
+        public string Secret { get; set; }
+    }
+
+    public partial class TonContractCalcRunFeeParamsWaitParams
+    {
+        [JsonProperty("timeout", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Timeout { get; set; }
+
+        [JsonProperty("transactionLt", NullValueHandling = NullValueHandling.Ignore)]
+        public string TransactionLt { get; set; }
+    }
+
+    public partial class TonContractRunLocalParams
+    {
+        [JsonProperty("abi")]
+        public TonContractRunLocalParamsAbi Abi { get; set; }
+
+        [JsonProperty("address")]
+        public string Address { get; set; }
+
+        [JsonProperty("functionName")]
+        public string FunctionName { get; set; }
+
+        [JsonProperty("header")]
+        public object Header { get; set; }
+
+        [JsonProperty("input")]
+        public object Input { get; set; }
+
+        [JsonProperty("keyPair", NullValueHandling = NullValueHandling.Ignore)]
+        public TonContractRunLocalParamsKeyPair KeyPair { get; set; }
+
+        [JsonProperty("signingBox")]
+        public object SigningBox { get; set; }
+
+        [JsonProperty("account", NullValueHandling = NullValueHandling.Ignore)]
+        public TonContractRunLocalParamsAccount Account { get; set; }
+
+        [JsonProperty("fullRun", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? FullRun { get; set; }
+
+        [JsonProperty("waitParams", NullValueHandling = NullValueHandling.Ignore)]
+        public TonContractRunLocalParamsWaitParams WaitParams { get; set; }
+    }
+
+    public partial class TonContractRunLocalParamsAbi
+    {
+        [JsonProperty("ABI version")]
+        public double AbiVersion { get; set; }
+
+        [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
+        public BraggadociousDatum[] Data { get; set; }
+
+        [JsonProperty("events")]
+        public BraggadociousEvent[] Events { get; set; }
+
+        [JsonProperty("functions")]
+        public BraggadociousFunction[] Functions { get; set; }
+
+        [JsonProperty("header", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] Header { get; set; }
+
+        [JsonProperty("setTime", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? SetTime { get; set; }
+    }
+
+    public partial class BraggadociousDatum
+    {
+        [JsonProperty("key")]
+        public double Key { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class BraggadociousEvent
+    {
+        [JsonProperty("inputs")]
+        public Input14[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public partial class Input14
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class BraggadociousFunction
+    {
+        [JsonProperty("inputs")]
+        public Input15[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("outputs")]
+        public Output1[] Outputs { get; set; }
+    }
+
+    public partial class Input15
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class Output1
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TonContractRunLocalParamsAccount
+    {
+        [JsonProperty("acc_type", NullValueHandling = NullValueHandling.Ignore)]
+        public double? AccType { get; set; }
+
+        [JsonProperty("balance", NullValueHandling = NullValueHandling.Ignore)]
+        public string Balance { get; set; }
+
+        [JsonProperty("boc", NullValueHandling = NullValueHandling.Ignore)]
+        public string Boc { get; set; }
+
+        [JsonProperty("code_hash", NullValueHandling = NullValueHandling.Ignore)]
+        public string CodeHash { get; set; }
+
+        [JsonProperty("data_hash", NullValueHandling = NullValueHandling.Ignore)]
+        public string DataHash { get; set; }
+
+        [JsonProperty("due_payment", NullValueHandling = NullValueHandling.Ignore)]
+        public string DuePayment { get; set; }
+
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+        public string Id { get; set; }
+
+        [JsonProperty("last_paid", NullValueHandling = NullValueHandling.Ignore)]
+        public double? LastPaid { get; set; }
+
+        [JsonProperty("last_trans_lt", NullValueHandling = NullValueHandling.Ignore)]
+        public string LastTransLt { get; set; }
+
+        [JsonProperty("library", NullValueHandling = NullValueHandling.Ignore)]
+        public string Library { get; set; }
+
+        [JsonProperty("split_depth", NullValueHandling = NullValueHandling.Ignore)]
+        public double? SplitDepth { get; set; }
+
+        [JsonProperty("tick", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Tick { get; set; }
+
+        [JsonProperty("tock", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Tock { get; set; }
+    }
+
+    public partial class TonContractRunLocalParamsKeyPair
+    {
+        [JsonProperty("public")]
+        public string Public { get; set; }
+
+        [JsonProperty("secret")]
+        public string Secret { get; set; }
+    }
+
+    public partial class TonContractRunLocalParamsWaitParams
+    {
+        [JsonProperty("timeout", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Timeout { get; set; }
+
+        [JsonProperty("transactionLt", NullValueHandling = NullValueHandling.Ignore)]
+        public string TransactionLt { get; set; }
+    }
+
+    public partial class TonContractRunMessageLocalParams
+    {
+        [JsonProperty("abi", NullValueHandling = NullValueHandling.Ignore)]
+        public TonContractRunMessageLocalParamsAbi Abi { get; set; }
+
+        [JsonProperty("account", NullValueHandling = NullValueHandling.Ignore)]
+        public TonContractRunMessageLocalParamsAccount Account { get; set; }
+
+        [JsonProperty("address")]
+        public string Address { get; set; }
+
+        [JsonProperty("fullRun", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? FullRun { get; set; }
+
+        [JsonProperty("functionName", NullValueHandling = NullValueHandling.Ignore)]
+        public string FunctionName { get; set; }
+
+        [JsonProperty("messageBodyBase64")]
+        public string MessageBodyBase64 { get; set; }
+
+        [JsonProperty("waitParams", NullValueHandling = NullValueHandling.Ignore)]
+        public TonContractRunMessageLocalParamsWaitParams WaitParams { get; set; }
+    }
+
+    public partial class TonContractRunMessageLocalParamsAbi
+    {
+        [JsonProperty("ABI version")]
+        public double AbiVersion { get; set; }
+
+        [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
+        public Datum1[] Data { get; set; }
+
+        [JsonProperty("events")]
+        public Event1[] Events { get; set; }
+
+        [JsonProperty("functions")]
+        public Function1[] Functions { get; set; }
+
+        [JsonProperty("header", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] Header { get; set; }
+
+        [JsonProperty("setTime", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? SetTime { get; set; }
+    }
+
+    public partial class Datum1
+    {
+        [JsonProperty("key")]
+        public double Key { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class Event1
+    {
+        [JsonProperty("inputs")]
+        public Input16[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public partial class Input16
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class Function1
+    {
+        [JsonProperty("inputs")]
+        public Input17[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("outputs")]
+        public Output2[] Outputs { get; set; }
+    }
+
+    public partial class Input17
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class Output2
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TonContractRunMessageLocalParamsAccount
+    {
+        [JsonProperty("acc_type", NullValueHandling = NullValueHandling.Ignore)]
+        public double? AccType { get; set; }
+
+        [JsonProperty("balance", NullValueHandling = NullValueHandling.Ignore)]
+        public string Balance { get; set; }
+
+        [JsonProperty("boc", NullValueHandling = NullValueHandling.Ignore)]
+        public string Boc { get; set; }
+
+        [JsonProperty("code_hash", NullValueHandling = NullValueHandling.Ignore)]
+        public string CodeHash { get; set; }
+
+        [JsonProperty("data_hash", NullValueHandling = NullValueHandling.Ignore)]
+        public string DataHash { get; set; }
+
+        [JsonProperty("due_payment", NullValueHandling = NullValueHandling.Ignore)]
+        public string DuePayment { get; set; }
+
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+        public string Id { get; set; }
+
+        [JsonProperty("last_paid", NullValueHandling = NullValueHandling.Ignore)]
+        public double? LastPaid { get; set; }
+
+        [JsonProperty("last_trans_lt", NullValueHandling = NullValueHandling.Ignore)]
+        public string LastTransLt { get; set; }
+
+        [JsonProperty("library", NullValueHandling = NullValueHandling.Ignore)]
+        public string Library { get; set; }
+
+        [JsonProperty("split_depth", NullValueHandling = NullValueHandling.Ignore)]
+        public double? SplitDepth { get; set; }
+
+        [JsonProperty("tick", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Tick { get; set; }
+
+        [JsonProperty("tock", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Tock { get; set; }
+    }
+
+    public partial class TonContractRunMessageLocalParamsWaitParams
+    {
+        [JsonProperty("timeout", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Timeout { get; set; }
+
+        [JsonProperty("transactionLt", NullValueHandling = NullValueHandling.Ignore)]
+        public string TransactionLt { get; set; }
+    }
+
+    public partial class TonContractRunGetParams
+    {
+        [JsonProperty("address", NullValueHandling = NullValueHandling.Ignore)]
+        public string Address { get; set; }
+
+        [JsonProperty("balance", NullValueHandling = NullValueHandling.Ignore)]
+        public string Balance { get; set; }
+
+        [JsonProperty("bocBase64", NullValueHandling = NullValueHandling.Ignore)]
+        public string BocBase64 { get; set; }
+
+        [JsonProperty("codeBase64", NullValueHandling = NullValueHandling.Ignore)]
+        public string CodeBase64 { get; set; }
+
+        [JsonProperty("dataBase64", NullValueHandling = NullValueHandling.Ignore)]
+        public string DataBase64 { get; set; }
+
+        [JsonProperty("functionName")]
+        public string FunctionName { get; set; }
+
+        [JsonProperty("input")]
+        public object Input { get; set; }
+
+        [JsonProperty("last_paid", NullValueHandling = NullValueHandling.Ignore)]
+        public double? LastPaid { get; set; }
+    }
+
+    public partial class TonContractRunGetResult
+    {
+        [JsonProperty("output")]
+        public object Output { get; set; }
+    }
+
+    public partial class TonContractTransactionFees
+    {
+        [JsonProperty("gasFee")]
+        public string GasFee { get; set; }
+
+        [JsonProperty("inMsgFwdFee")]
+        public string InMsgFwdFee { get; set; }
+
+        [JsonProperty("outMsgsFwdFee")]
+        public string OutMsgsFwdFee { get; set; }
+
+        [JsonProperty("storageFee")]
+        public string StorageFee { get; set; }
+
+        [JsonProperty("totalAccountFees")]
+        public string TotalAccountFees { get; set; }
+
+        [JsonProperty("totalOutput")]
+        public string TotalOutput { get; set; }
+    }
+
+    public partial class TonContractCalcFeeResult
+    {
+        [JsonProperty("fees")]
+        public TonContractCalcFeeResultFees Fees { get; set; }
+    }
+
+    public partial class TonContractCalcFeeResultFees
+    {
+        [JsonProperty("gasFee")]
+        public string GasFee { get; set; }
+
+        [JsonProperty("inMsgFwdFee")]
+        public string InMsgFwdFee { get; set; }
+
+        [JsonProperty("outMsgsFwdFee")]
+        public string OutMsgsFwdFee { get; set; }
+
+        [JsonProperty("storageFee")]
+        public string StorageFee { get; set; }
+
+        [JsonProperty("totalAccountFees")]
+        public string TotalAccountFees { get; set; }
+
+        [JsonProperty("totalOutput")]
+        public string TotalOutput { get; set; }
+    }
+
+    public partial class TonContractCalcMsgProcessingFeesParams
+    {
+        [JsonProperty("address")]
+        public string Address { get; set; }
+
+        [JsonProperty("emulateBalance", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? EmulateBalance { get; set; }
+
+        [JsonProperty("message")]
+        public TonContractCalcMsgProcessingFeesParamsMessage Message { get; set; }
+
+        [JsonProperty("newAccount", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? NewAccount { get; set; }
+
+        [JsonProperty("waitParams", NullValueHandling = NullValueHandling.Ignore)]
+        public TonContractCalcMsgProcessingFeesParamsWaitParams WaitParams { get; set; }
+    }
+
+    public partial class TonContractCalcMsgProcessingFeesParamsMessage
+    {
+        [JsonProperty("address")]
+        public string Address { get; set; }
+
+        [JsonProperty("expire", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Expire { get; set; }
+
+        [JsonProperty("messageBodyBase64")]
+        public string MessageBodyBase64 { get; set; }
+
+        [JsonProperty("messageId", NullValueHandling = NullValueHandling.Ignore)]
+        public string MessageId { get; set; }
+    }
+
+    public partial class TonContractCalcMsgProcessingFeesParamsWaitParams
+    {
+        [JsonProperty("timeout", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Timeout { get; set; }
+
+        [JsonProperty("transactionLt", NullValueHandling = NullValueHandling.Ignore)]
+        public string TransactionLt { get; set; }
+    }
+
+    public partial class TonContractDecodeRunOutputParams
+    {
+        [JsonProperty("abi")]
+        public TonContractDecodeRunOutputParamsAbi Abi { get; set; }
+
+        [JsonProperty("bodyBase64")]
+        public string BodyBase64 { get; set; }
+
+        [JsonProperty("functionName")]
+        public string FunctionName { get; set; }
+
+        [JsonProperty("internal", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Internal { get; set; }
+    }
+
+    public partial class TonContractDecodeRunOutputParamsAbi
+    {
+        [JsonProperty("ABI version")]
+        public double AbiVersion { get; set; }
+
+        [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
+        public Datum2[] Data { get; set; }
+
+        [JsonProperty("events")]
+        public Event2[] Events { get; set; }
+
+        [JsonProperty("functions")]
+        public Function2[] Functions { get; set; }
+
+        [JsonProperty("header", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] Header { get; set; }
+
+        [JsonProperty("setTime", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? SetTime { get; set; }
+    }
+
+    public partial class Datum2
+    {
+        [JsonProperty("key")]
+        public double Key { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class Event2
+    {
+        [JsonProperty("inputs")]
+        public Input18[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public partial class Input18
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class Function2
+    {
+        [JsonProperty("inputs")]
+        public Input19[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("outputs")]
+        public Output3[] Outputs { get; set; }
+    }
+
+    public partial class Input19
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class Output3
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TonContractDecodeMessageBodyParams
+    {
+        [JsonProperty("abi")]
+        public TonContractDecodeMessageBodyParamsAbi Abi { get; set; }
+
+        [JsonProperty("bodyBase64")]
+        public string BodyBase64 { get; set; }
+
+        [JsonProperty("internal", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Internal { get; set; }
+    }
+
+    public partial class TonContractDecodeMessageBodyParamsAbi
+    {
+        [JsonProperty("ABI version")]
+        public double AbiVersion { get; set; }
+
+        [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
+        public Datum3[] Data { get; set; }
+
+        [JsonProperty("events")]
+        public Event3[] Events { get; set; }
+
+        [JsonProperty("functions")]
+        public Function3[] Functions { get; set; }
+
+        [JsonProperty("header", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] Header { get; set; }
+
+        [JsonProperty("setTime", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? SetTime { get; set; }
+    }
+
+    public partial class Datum3
+    {
+        [JsonProperty("key")]
+        public double Key { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class Event3
+    {
+        [JsonProperty("inputs")]
+        public Input20[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public partial class Input20
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class Function3
+    {
+        [JsonProperty("inputs")]
+        public Input21[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("outputs")]
+        public Output4[] Outputs { get; set; }
+    }
+
+    public partial class Input21
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class Output4
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TonWaitForTransactionParams
+    {
+        [JsonProperty("abi", NullValueHandling = NullValueHandling.Ignore)]
+        public TonWaitForTransactionParamsAbi Abi { get; set; }
+
+        [JsonProperty("functionName", NullValueHandling = NullValueHandling.Ignore)]
+        public string FunctionName { get; set; }
+
+        [JsonProperty("infiniteWait", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? InfiniteWait { get; set; }
+
+        [JsonProperty("message")]
+        public TonWaitForTransactionParamsMessage Message { get; set; }
+
+        [JsonProperty("messageProcessingState")]
+        public MessageProcessingState MessageProcessingState { get; set; }
+    }
+
+    public partial class TonWaitForTransactionParamsAbi
+    {
+        [JsonProperty("ABI version")]
+        public double AbiVersion { get; set; }
+
+        [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
+        public Datum4[] Data { get; set; }
+
+        [JsonProperty("events")]
+        public Event4[] Events { get; set; }
+
+        [JsonProperty("functions")]
+        public Function4[] Functions { get; set; }
+
+        [JsonProperty("header", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] Header { get; set; }
+
+        [JsonProperty("setTime", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? SetTime { get; set; }
+    }
+
+    public partial class Datum4
+    {
+        [JsonProperty("key")]
+        public double Key { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class Event4
+    {
+        [JsonProperty("inputs")]
+        public Input22[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public partial class Input22
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class Function4
+    {
+        [JsonProperty("inputs")]
+        public Input23[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("outputs")]
+        public Output5[] Outputs { get; set; }
+    }
+
+    public partial class Input23
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class Output5
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TonWaitForTransactionParamsMessage
+    {
+        [JsonProperty("address")]
+        public string Address { get; set; }
+
+        [JsonProperty("expire", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Expire { get; set; }
+
+        [JsonProperty("messageBodyBase64")]
+        public string MessageBodyBase64 { get; set; }
+
+        [JsonProperty("messageId", NullValueHandling = NullValueHandling.Ignore)]
+        public string MessageId { get; set; }
+    }
+
+    public partial class MessageProcessingState
+    {
+        [JsonProperty("lastBlockId")]
+        public string LastBlockId { get; set; }
+
+        [JsonProperty("sendingTime")]
+        public double SendingTime { get; set; }
+    }
+
+    public partial class TonContractRunResult
+    {
+        [JsonProperty("fees")]
+        public TonContractRunResultFees Fees { get; set; }
+
+        [JsonProperty("output")]
+        public object Output { get; set; }
+
+        [JsonProperty("transaction")]
+        public TonContractRunResultTransaction Transaction { get; set; }
+    }
+
+    public partial class TonContractRunResultFees
+    {
+        [JsonProperty("gasFee")]
+        public string GasFee { get; set; }
+
+        [JsonProperty("inMsgFwdFee")]
+        public string InMsgFwdFee { get; set; }
+
+        [JsonProperty("outMsgsFwdFee")]
+        public string OutMsgsFwdFee { get; set; }
+
+        [JsonProperty("storageFee")]
+        public string StorageFee { get; set; }
+
+        [JsonProperty("totalAccountFees")]
+        public string TotalAccountFees { get; set; }
+
+        [JsonProperty("totalOutput")]
+        public string TotalOutput { get; set; }
+    }
+
+    public partial class TonContractRunResultTransaction
+    {
+        [JsonProperty("aborted", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Aborted { get; set; }
+
+        [JsonProperty("account_addr")]
+        public string AccountAddr { get; set; }
+
+        [JsonProperty("action", NullValueHandling = NullValueHandling.Ignore)]
+        public FluffyAction Action { get; set; }
+
+        [JsonProperty("block_id", NullValueHandling = NullValueHandling.Ignore)]
+        public string BlockId { get; set; }
+
+        [JsonProperty("compute", NullValueHandling = NullValueHandling.Ignore)]
+        public FluffyCompute Compute { get; set; }
+
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+        public string Id { get; set; }
+
+        [JsonProperty("in_msg", NullValueHandling = NullValueHandling.Ignore)]
+        public string InMsg { get; set; }
+
+        [JsonProperty("lt", NullValueHandling = NullValueHandling.Ignore)]
+        public string Lt { get; set; }
+
+        [JsonProperty("now", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Now { get; set; }
+
+        [JsonProperty("out_messages", NullValueHandling = NullValueHandling.Ignore)]
+        public FluffyOutMessage[] OutMessages { get; set; }
+
+        [JsonProperty("out_msgs", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] OutMsgs { get; set; }
+
+        [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Status { get; set; }
+
+        [JsonProperty("storage", NullValueHandling = NullValueHandling.Ignore)]
+        public FluffyStorage Storage { get; set; }
+
+        [JsonProperty("tr_type", NullValueHandling = NullValueHandling.Ignore)]
+        public double? TrType { get; set; }
+    }
+
+    public partial class FluffyAction
+    {
+        [JsonProperty("no_funds", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? NoFunds { get; set; }
+
+        [JsonProperty("result_code", NullValueHandling = NullValueHandling.Ignore)]
+        public double? ResultCode { get; set; }
+
+        [JsonProperty("success", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Success { get; set; }
+
+        [JsonProperty("valid", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Valid { get; set; }
+    }
+
+    public partial class FluffyCompute
+    {
+        [JsonProperty("compute_type", NullValueHandling = NullValueHandling.Ignore)]
+        public double? ComputeType { get; set; }
+
+        [JsonProperty("exit_code", NullValueHandling = NullValueHandling.Ignore)]
+        public double? ExitCode { get; set; }
+
+        [JsonProperty("gas_fees", NullValueHandling = NullValueHandling.Ignore)]
+        public string GasFees { get; set; }
+
+        [JsonProperty("skipped_reason", NullValueHandling = NullValueHandling.Ignore)]
+        public double? SkippedReason { get; set; }
+
+        [JsonProperty("success", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Success { get; set; }
+
+        [JsonProperty("total_fwd_fees", NullValueHandling = NullValueHandling.Ignore)]
+        public string TotalFwdFees { get; set; }
+    }
+
+    public partial class FluffyOutMessage
+    {
+        [JsonProperty("body", NullValueHandling = NullValueHandling.Ignore)]
+        public string Body { get; set; }
+
+        [JsonProperty("created_at", NullValueHandling = NullValueHandling.Ignore)]
+        public double? CreatedAt { get; set; }
+
+        [JsonProperty("dst", NullValueHandling = NullValueHandling.Ignore)]
+        public string Dst { get; set; }
+
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+        public string Id { get; set; }
+
+        [JsonProperty("msg_type", NullValueHandling = NullValueHandling.Ignore)]
+        public double? MsgType { get; set; }
+
+        [JsonProperty("src", NullValueHandling = NullValueHandling.Ignore)]
+        public string Src { get; set; }
+
+        [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Status { get; set; }
+    }
+
+    public partial class FluffyStorage
+    {
+        [JsonProperty("status_change", NullValueHandling = NullValueHandling.Ignore)]
+        public double? StatusChange { get; set; }
+
+        [JsonProperty("storage_fees_collected", NullValueHandling = NullValueHandling.Ignore)]
+        public string StorageFeesCollected { get; set; }
+    }
+
+    public partial class TonContractRunLocalResult
+    {
+        [JsonProperty("fees")]
+        public TonContractRunLocalResultFees Fees { get; set; }
+
+        [JsonProperty("output")]
+        public object Output { get; set; }
+
+        [JsonProperty("transaction")]
+        public TonContractRunLocalResultTransaction Transaction { get; set; }
+
+        [JsonProperty("account", NullValueHandling = NullValueHandling.Ignore)]
+        public TonContractRunLocalResultAccount Account { get; set; }
+    }
+
+    public partial class TonContractRunLocalResultAccount
+    {
+        [JsonProperty("acc_type", NullValueHandling = NullValueHandling.Ignore)]
+        public double? AccType { get; set; }
+
+        [JsonProperty("balance", NullValueHandling = NullValueHandling.Ignore)]
+        public string Balance { get; set; }
+
+        [JsonProperty("boc", NullValueHandling = NullValueHandling.Ignore)]
+        public string Boc { get; set; }
+
+        [JsonProperty("code_hash", NullValueHandling = NullValueHandling.Ignore)]
+        public string CodeHash { get; set; }
+
+        [JsonProperty("data_hash", NullValueHandling = NullValueHandling.Ignore)]
+        public string DataHash { get; set; }
+
+        [JsonProperty("due_payment", NullValueHandling = NullValueHandling.Ignore)]
+        public string DuePayment { get; set; }
+
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+        public string Id { get; set; }
+
+        [JsonProperty("last_paid", NullValueHandling = NullValueHandling.Ignore)]
+        public double? LastPaid { get; set; }
+
+        [JsonProperty("last_trans_lt", NullValueHandling = NullValueHandling.Ignore)]
+        public string LastTransLt { get; set; }
+
+        [JsonProperty("library", NullValueHandling = NullValueHandling.Ignore)]
+        public string Library { get; set; }
+
+        [JsonProperty("split_depth", NullValueHandling = NullValueHandling.Ignore)]
+        public double? SplitDepth { get; set; }
+
+        [JsonProperty("tick", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Tick { get; set; }
+
+        [JsonProperty("tock", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Tock { get; set; }
+    }
+
+    public partial class TonContractRunLocalResultFees
+    {
+        [JsonProperty("gasFee")]
+        public string GasFee { get; set; }
+
+        [JsonProperty("inMsgFwdFee")]
+        public string InMsgFwdFee { get; set; }
+
+        [JsonProperty("outMsgsFwdFee")]
+        public string OutMsgsFwdFee { get; set; }
+
+        [JsonProperty("storageFee")]
+        public string StorageFee { get; set; }
+
+        [JsonProperty("totalAccountFees")]
+        public string TotalAccountFees { get; set; }
+
+        [JsonProperty("totalOutput")]
+        public string TotalOutput { get; set; }
+    }
+
+    public partial class TonContractRunLocalResultTransaction
+    {
+        [JsonProperty("aborted", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Aborted { get; set; }
+
+        [JsonProperty("account_addr")]
+        public string AccountAddr { get; set; }
+
+        [JsonProperty("action", NullValueHandling = NullValueHandling.Ignore)]
+        public TentacledAction Action { get; set; }
+
+        [JsonProperty("block_id", NullValueHandling = NullValueHandling.Ignore)]
+        public string BlockId { get; set; }
+
+        [JsonProperty("compute", NullValueHandling = NullValueHandling.Ignore)]
+        public TentacledCompute Compute { get; set; }
+
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+        public string Id { get; set; }
+
+        [JsonProperty("in_msg", NullValueHandling = NullValueHandling.Ignore)]
+        public string InMsg { get; set; }
+
+        [JsonProperty("lt", NullValueHandling = NullValueHandling.Ignore)]
+        public string Lt { get; set; }
+
+        [JsonProperty("now", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Now { get; set; }
+
+        [JsonProperty("out_messages", NullValueHandling = NullValueHandling.Ignore)]
+        public TentacledOutMessage[] OutMessages { get; set; }
+
+        [JsonProperty("out_msgs", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] OutMsgs { get; set; }
+
+        [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Status { get; set; }
+
+        [JsonProperty("storage", NullValueHandling = NullValueHandling.Ignore)]
+        public TentacledStorage Storage { get; set; }
+
+        [JsonProperty("tr_type", NullValueHandling = NullValueHandling.Ignore)]
+        public double? TrType { get; set; }
+    }
+
+    public partial class TentacledAction
+    {
+        [JsonProperty("no_funds", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? NoFunds { get; set; }
+
+        [JsonProperty("result_code", NullValueHandling = NullValueHandling.Ignore)]
+        public double? ResultCode { get; set; }
+
+        [JsonProperty("success", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Success { get; set; }
+
+        [JsonProperty("valid", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Valid { get; set; }
+    }
+
+    public partial class TentacledCompute
+    {
+        [JsonProperty("compute_type", NullValueHandling = NullValueHandling.Ignore)]
+        public double? ComputeType { get; set; }
+
+        [JsonProperty("exit_code", NullValueHandling = NullValueHandling.Ignore)]
+        public double? ExitCode { get; set; }
+
+        [JsonProperty("gas_fees", NullValueHandling = NullValueHandling.Ignore)]
+        public string GasFees { get; set; }
+
+        [JsonProperty("skipped_reason", NullValueHandling = NullValueHandling.Ignore)]
+        public double? SkippedReason { get; set; }
+
+        [JsonProperty("success", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Success { get; set; }
+
+        [JsonProperty("total_fwd_fees", NullValueHandling = NullValueHandling.Ignore)]
+        public string TotalFwdFees { get; set; }
+    }
+
+    public partial class TentacledOutMessage
+    {
+        [JsonProperty("body", NullValueHandling = NullValueHandling.Ignore)]
+        public string Body { get; set; }
+
+        [JsonProperty("created_at", NullValueHandling = NullValueHandling.Ignore)]
+        public double? CreatedAt { get; set; }
+
+        [JsonProperty("dst", NullValueHandling = NullValueHandling.Ignore)]
+        public string Dst { get; set; }
+
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+        public string Id { get; set; }
+
+        [JsonProperty("msg_type", NullValueHandling = NullValueHandling.Ignore)]
+        public double? MsgType { get; set; }
+
+        [JsonProperty("src", NullValueHandling = NullValueHandling.Ignore)]
+        public string Src { get; set; }
+
+        [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Status { get; set; }
+    }
+
+    public partial class TentacledStorage
+    {
+        [JsonProperty("status_change", NullValueHandling = NullValueHandling.Ignore)]
+        public double? StatusChange { get; set; }
+
+        [JsonProperty("storage_fees_collected", NullValueHandling = NullValueHandling.Ignore)]
+        public string StorageFeesCollected { get; set; }
+    }
+
+    public partial class TonContractDecodeMessageBodyResult
+    {
+        [JsonProperty("function")]
+        public string Function { get; set; }
+
+        [JsonProperty("output")]
+        public object Output { get; set; }
+    }
+
+    public partial class TonContractGetDeployDataParams
+    {
+        [JsonProperty("abi", NullValueHandling = NullValueHandling.Ignore)]
+        public TonContractGetDeployDataParamsAbi Abi { get; set; }
+
+        [JsonProperty("imageBase64", NullValueHandling = NullValueHandling.Ignore)]
+        public string ImageBase64 { get; set; }
+
+        [JsonProperty("initParams")]
+        public object InitParams { get; set; }
+
+        [JsonProperty("publicKeyHex")]
+        public string PublicKeyHex { get; set; }
+
+        [JsonProperty("workchainId", NullValueHandling = NullValueHandling.Ignore)]
+        public double? WorkchainId { get; set; }
+    }
+
+    public partial class TonContractGetDeployDataParamsAbi
+    {
+        [JsonProperty("ABI version")]
+        public double AbiVersion { get; set; }
+
+        [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
+        public Datum5[] Data { get; set; }
+
+        [JsonProperty("events")]
+        public Event5[] Events { get; set; }
+
+        [JsonProperty("functions")]
+        public Function5[] Functions { get; set; }
+
+        [JsonProperty("header", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] Header { get; set; }
+
+        [JsonProperty("setTime", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? SetTime { get; set; }
+    }
+
+    public partial class Datum5
+    {
+        [JsonProperty("key")]
+        public double Key { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class Event5
+    {
+        [JsonProperty("inputs")]
+        public Input24[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public partial class Input24
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class Function5
+    {
+        [JsonProperty("inputs")]
+        public Input25[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("outputs")]
+        public Output6[] Outputs { get; set; }
+    }
+
+    public partial class Input25
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class Output6
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TonContractGetDeployDataResult
+    {
+        [JsonProperty("accountId", NullValueHandling = NullValueHandling.Ignore)]
+        public string AccountId { get; set; }
+
+        [JsonProperty("address", NullValueHandling = NullValueHandling.Ignore)]
+        public string Address { get; set; }
+
+        [JsonProperty("dataBase64")]
+        public string DataBase64 { get; set; }
+
+        [JsonProperty("imageBase64", NullValueHandling = NullValueHandling.Ignore)]
+        public string ImageBase64 { get; set; }
+    }
+
+    public partial class TonContractGetCodeFromImageParams
+    {
+        [JsonProperty("imageBase64")]
+        public string ImageBase64 { get; set; }
+    }
+
+    public partial class TonContractGetCodeFromImageResult
+    {
+        [JsonProperty("codeBase64")]
+        public string CodeBase64 { get; set; }
+    }
+
+    public partial class TonContractCreateRunBodyParams
+    {
+        [JsonProperty("abi")]
+        public TonContractCreateRunBodyParamsAbi Abi { get; set; }
+
+        [JsonProperty("function")]
+        public string Function { get; set; }
+
+        [JsonProperty("header")]
+        public object Header { get; set; }
+
+        [JsonProperty("internal", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Internal { get; set; }
+
+        [JsonProperty("keyPair", NullValueHandling = NullValueHandling.Ignore)]
+        public TonContractCreateRunBodyParamsKeyPair KeyPair { get; set; }
+
+        [JsonProperty("params")]
+        public object Params { get; set; }
+
+        [JsonProperty("signingBox")]
+        public object SigningBox { get; set; }
+    }
+
+    public partial class TonContractCreateRunBodyParamsAbi
+    {
+        [JsonProperty("ABI version")]
+        public double AbiVersion { get; set; }
+
+        [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
+        public Datum6[] Data { get; set; }
+
+        [JsonProperty("events")]
+        public Event6[] Events { get; set; }
+
+        [JsonProperty("functions")]
+        public Function6[] Functions { get; set; }
+
+        [JsonProperty("header", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] Header { get; set; }
+
+        [JsonProperty("setTime", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? SetTime { get; set; }
+    }
+
+    public partial class Datum6
+    {
+        [JsonProperty("key")]
+        public double Key { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class Event6
+    {
+        [JsonProperty("inputs")]
+        public Input26[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public partial class Input26
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class Function6
+    {
+        [JsonProperty("inputs")]
+        public Input27[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("outputs")]
+        public Output7[] Outputs { get; set; }
+    }
+
+    public partial class Input27
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class Output7
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TonContractCreateRunBodyParamsKeyPair
+    {
+        [JsonProperty("public")]
+        public string Public { get; set; }
+
+        [JsonProperty("secret")]
+        public string Secret { get; set; }
+    }
+
+    public partial class TonContractCreateRunBodyResult
+    {
+        [JsonProperty("bodyBase64")]
+        public string BodyBase64 { get; set; }
+    }
+
+    public partial class TonContractGetFunctionIdParams
+    {
+        [JsonProperty("abi")]
+        public TonContractGetFunctionIdParamsAbi Abi { get; set; }
+
+        [JsonProperty("function")]
+        public string Function { get; set; }
+
+        [JsonProperty("input")]
+        public bool Input { get; set; }
+    }
+
+    public partial class TonContractGetFunctionIdParamsAbi
+    {
+        [JsonProperty("ABI version")]
+        public double AbiVersion { get; set; }
+
+        [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
+        public Datum7[] Data { get; set; }
+
+        [JsonProperty("events")]
+        public Event7[] Events { get; set; }
+
+        [JsonProperty("functions")]
+        public Function7[] Functions { get; set; }
+
+        [JsonProperty("header", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] Header { get; set; }
+
+        [JsonProperty("setTime", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? SetTime { get; set; }
+    }
+
+    public partial class Datum7
+    {
+        [JsonProperty("key")]
+        public double Key { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class Event7
+    {
+        [JsonProperty("inputs")]
+        public Input28[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public partial class Input28
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class Function7
+    {
+        [JsonProperty("inputs")]
+        public Input29[] Inputs { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("outputs")]
+        public Output8[] Outputs { get; set; }
+    }
+
+    public partial class Input29
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class Output8
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public partial class TonContractGetFunctionIdResult
+    {
+        [JsonProperty("id")]
+        public double Id { get; set; }
+    }
+
+    public partial class TonContractAddressBase64Params
+    {
+        [JsonProperty("bounce")]
+        public bool Bounce { get; set; }
+
+        [JsonProperty("test")]
+        public bool Test { get; set; }
+
+        [JsonProperty("url")]
+        public bool Url { get; set; }
+    }
+
+    public partial class TonContractConvertAddressParams
+    {
+        [JsonProperty("address")]
+        public string Address { get; set; }
+
+        [JsonProperty("base64Params", NullValueHandling = NullValueHandling.Ignore)]
+        public Base64Params Base64Params { get; set; }
+
+        [JsonProperty("convertTo")]
+        public TonAddressStringVariantTypeEnum ConvertTo { get; set; }
+    }
+
+    public partial class Base64Params
+    {
+        [JsonProperty("bounce")]
+        public bool Bounce { get; set; }
+
+        [JsonProperty("test")]
+        public bool Test { get; set; }
+
+        [JsonProperty("url")]
+        public bool Url { get; set; }
+    }
+
+    public partial class TonContractConvertAddressResult
+    {
+        [JsonProperty("address")]
+        public string Address { get; set; }
+    }
+
+    public partial class TonContractBoc
+    {
+        [JsonProperty("bocBase64")]
+        public string BocBase64 { get; set; }
+    }
+
+    public partial class TonContractGetBocHashResult
+    {
+        [JsonProperty("hash")]
+        public string Hash { get; set; }
+    }
+
+    public partial class QOtherCurrencyCollection
+    {
+        [JsonProperty("currency")]
+        public double Currency { get; set; }
+
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public partial class QAccount
+    {
+        [JsonProperty("acc_type", NullValueHandling = NullValueHandling.Ignore)]
+        public double? AccType { get; set; }
+
+        [JsonProperty("balance", NullValueHandling = NullValueHandling.Ignore)]
+        public string Balance { get; set; }
+
+        [JsonProperty("boc", NullValueHandling = NullValueHandling.Ignore)]
+        public string Boc { get; set; }
+
+        [JsonProperty("code_hash", NullValueHandling = NullValueHandling.Ignore)]
+        public string CodeHash { get; set; }
+
+        [JsonProperty("data_hash", NullValueHandling = NullValueHandling.Ignore)]
+        public string DataHash { get; set; }
+
+        [JsonProperty("due_payment", NullValueHandling = NullValueHandling.Ignore)]
+        public string DuePayment { get; set; }
+
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+        public string Id { get; set; }
+
+        [JsonProperty("last_paid", NullValueHandling = NullValueHandling.Ignore)]
+        public double? LastPaid { get; set; }
+
+        [JsonProperty("last_trans_lt", NullValueHandling = NullValueHandling.Ignore)]
+        public string LastTransLt { get; set; }
+
+        [JsonProperty("library", NullValueHandling = NullValueHandling.Ignore)]
+        public string Library { get; set; }
+
+        [JsonProperty("split_depth", NullValueHandling = NullValueHandling.Ignore)]
+        public double? SplitDepth { get; set; }
+
+        [JsonProperty("tick", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Tick { get; set; }
+
+        [JsonProperty("tock", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Tock { get; set; }
+    }
+
+    public partial class QTransaction
+    {
+        [JsonProperty("aborted", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Aborted { get; set; }
+
+        [JsonProperty("account_addr")]
+        public string AccountAddr { get; set; }
+
+        [JsonProperty("action", NullValueHandling = NullValueHandling.Ignore)]
+        public QTransactionAction Action { get; set; }
+
+        [JsonProperty("block_id", NullValueHandling = NullValueHandling.Ignore)]
+        public string BlockId { get; set; }
+
+        [JsonProperty("compute", NullValueHandling = NullValueHandling.Ignore)]
+        public QTransactionCompute Compute { get; set; }
+
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+        public string Id { get; set; }
+
+        [JsonProperty("in_msg", NullValueHandling = NullValueHandling.Ignore)]
+        public string InMsg { get; set; }
+
+        [JsonProperty("lt", NullValueHandling = NullValueHandling.Ignore)]
+        public string Lt { get; set; }
+
+        [JsonProperty("now", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Now { get; set; }
+
+        [JsonProperty("out_messages", NullValueHandling = NullValueHandling.Ignore)]
+        public QTransactionOutMessage[] OutMessages { get; set; }
+
+        [JsonProperty("out_msgs", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] OutMsgs { get; set; }
+
+        [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Status { get; set; }
+
+        [JsonProperty("storage", NullValueHandling = NullValueHandling.Ignore)]
+        public QTransactionStorage Storage { get; set; }
+
+        [JsonProperty("tr_type", NullValueHandling = NullValueHandling.Ignore)]
+        public double? TrType { get; set; }
+    }
+
+    public partial class QTransactionAction
+    {
+        [JsonProperty("no_funds", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? NoFunds { get; set; }
+
+        [JsonProperty("result_code", NullValueHandling = NullValueHandling.Ignore)]
+        public double? ResultCode { get; set; }
+
+        [JsonProperty("success", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Success { get; set; }
+
+        [JsonProperty("valid", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Valid { get; set; }
+    }
+
+    public partial class QTransactionCompute
+    {
+        [JsonProperty("compute_type", NullValueHandling = NullValueHandling.Ignore)]
+        public double? ComputeType { get; set; }
+
+        [JsonProperty("exit_code", NullValueHandling = NullValueHandling.Ignore)]
+        public double? ExitCode { get; set; }
+
+        [JsonProperty("gas_fees", NullValueHandling = NullValueHandling.Ignore)]
+        public string GasFees { get; set; }
+
+        [JsonProperty("skipped_reason", NullValueHandling = NullValueHandling.Ignore)]
+        public double? SkippedReason { get; set; }
+
+        [JsonProperty("success", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Success { get; set; }
+
+        [JsonProperty("total_fwd_fees", NullValueHandling = NullValueHandling.Ignore)]
+        public string TotalFwdFees { get; set; }
+    }
+
+    public partial class QTransactionOutMessage
+    {
+        [JsonProperty("body", NullValueHandling = NullValueHandling.Ignore)]
+        public string Body { get; set; }
+
+        [JsonProperty("created_at", NullValueHandling = NullValueHandling.Ignore)]
+        public double? CreatedAt { get; set; }
+
+        [JsonProperty("dst", NullValueHandling = NullValueHandling.Ignore)]
+        public string Dst { get; set; }
+
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+        public string Id { get; set; }
+
+        [JsonProperty("msg_type", NullValueHandling = NullValueHandling.Ignore)]
+        public double? MsgType { get; set; }
+
+        [JsonProperty("src", NullValueHandling = NullValueHandling.Ignore)]
+        public string Src { get; set; }
+
+        [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Status { get; set; }
+    }
+
+    public partial class QTransactionStorage
+    {
+        [JsonProperty("status_change", NullValueHandling = NullValueHandling.Ignore)]
+        public double? StatusChange { get; set; }
+
+        [JsonProperty("storage_fees_collected", NullValueHandling = NullValueHandling.Ignore)]
+        public string StorageFeesCollected { get; set; }
+    }
+
+    public partial class QMessage
+    {
+        [JsonProperty("body", NullValueHandling = NullValueHandling.Ignore)]
+        public string Body { get; set; }
+
+        [JsonProperty("created_at", NullValueHandling = NullValueHandling.Ignore)]
+        public double? CreatedAt { get; set; }
+
+        [JsonProperty("dst", NullValueHandling = NullValueHandling.Ignore)]
+        public string Dst { get; set; }
+
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+        public string Id { get; set; }
+
+        [JsonProperty("msg_type", NullValueHandling = NullValueHandling.Ignore)]
+        public double? MsgType { get; set; }
+
+        [JsonProperty("src", NullValueHandling = NullValueHandling.Ignore)]
+        public string Src { get; set; }
+
+        [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Status { get; set; }
+    }
+
+    public partial class InMsg
+    {
+        [JsonProperty("msg_id", NullValueHandling = NullValueHandling.Ignore)]
+        public string MsgId { get; set; }
+
+        [JsonProperty("transaction_id", NullValueHandling = NullValueHandling.Ignore)]
+        public string TransactionId { get; set; }
+    }
+
+    public partial class QShardHash
+    {
+        [JsonProperty("descr", NullValueHandling = NullValueHandling.Ignore)]
+        public Descr Descr { get; set; }
+
+        [JsonProperty("shard")]
+        public string Shard { get; set; }
+
+        [JsonProperty("workchain_id")]
+        public double WorkchainId { get; set; }
+    }
+
+    public partial class Descr
+    {
+        [JsonProperty("before_merge")]
+        public bool BeforeMerge { get; set; }
+
+        [JsonProperty("before_split")]
+        public bool BeforeSplit { get; set; }
+
+        [JsonProperty("end_lt")]
+        public string EndLt { get; set; }
+
+        [JsonProperty("fees_collected")]
+        public string FeesCollected { get; set; }
+
+        [JsonProperty("file_hash")]
+        public string FileHash { get; set; }
+
+        [JsonProperty("flags")]
+        public double Flags { get; set; }
+
+        [JsonProperty("funds_created")]
+        public string FundsCreated { get; set; }
+
+        [JsonProperty("gen_utime")]
+        public double GenUtime { get; set; }
+
+        [JsonProperty("min_ref_mc_seqno")]
+        public double MinRefMcSeqno { get; set; }
+
+        [JsonProperty("next_catchain_seqno")]
+        public double NextCatchainSeqno { get; set; }
+
+        [JsonProperty("next_validator_shard")]
+        public string NextValidatorShard { get; set; }
+
+        [JsonProperty("nx_cc_updated")]
+        public bool NxCcUpdated { get; set; }
+
+        [JsonProperty("reg_mc_seqno")]
+        public double RegMcSeqno { get; set; }
+
+        [JsonProperty("root_hash")]
+        public string RootHash { get; set; }
+
+        [JsonProperty("seq_no")]
+        public double SeqNo { get; set; }
+
+        [JsonProperty("split")]
+        public double Split { get; set; }
+
+        [JsonProperty("split_type")]
+        public double SplitType { get; set; }
+
+        [JsonProperty("start_lt")]
+        public string StartLt { get; set; }
+
+        [JsonProperty("want_merge")]
+        public bool WantMerge { get; set; }
+
+        [JsonProperty("want_split")]
+        public bool WantSplit { get; set; }
+    }
+
+    public partial class QBlock
+    {
+        [JsonProperty("gen_utime", NullValueHandling = NullValueHandling.Ignore)]
+        public double? GenUtime { get; set; }
+
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+        public string Id { get; set; }
+
+        [JsonProperty("in_msg_descr", NullValueHandling = NullValueHandling.Ignore)]
+        public InMsgDescr[] InMsgDescr { get; set; }
+
+        [JsonProperty("shard", NullValueHandling = NullValueHandling.Ignore)]
+        public string Shard { get; set; }
+
+        [JsonProperty("tr_count", NullValueHandling = NullValueHandling.Ignore)]
+        public double? TrCount { get; set; }
+
+        [JsonProperty("workchain_id", NullValueHandling = NullValueHandling.Ignore)]
+        public double? WorkchainId { get; set; }
+    }
+
+    public partial class InMsgDescr
+    {
+        [JsonProperty("msg_id", NullValueHandling = NullValueHandling.Ignore)]
+        public string MsgId { get; set; }
+
+        [JsonProperty("transaction_id", NullValueHandling = NullValueHandling.Ignore)]
+        public string TransactionId { get; set; }
+    }
+
+    public partial class OrderBy
+    {
+        [JsonProperty("direction")]
+        public Direction Direction { get; set; }
+
+        [JsonProperty("path")]
+        public string Path { get; set; }
+    }
+
+    public partial class TonQueryParams
+    {
+        [JsonProperty("filter")]
+        public object Filter { get; set; }
+
+        [JsonProperty("limit", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Limit { get; set; }
+
+        [JsonProperty("operationId", NullValueHandling = NullValueHandling.Ignore)]
+        public string OperationId { get; set; }
+
+        [JsonProperty("orderBy", NullValueHandling = NullValueHandling.Ignore)]
+        public OrderByElement[] OrderBy { get; set; }
+
+        [JsonProperty("result")]
+        public string Result { get; set; }
+
+        [JsonProperty("timeout", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Timeout { get; set; }
+    }
+
+    public partial class OrderByElement
+    {
+        [JsonProperty("direction")]
+        public Direction Direction { get; set; }
+
+        [JsonProperty("path")]
+        public string Path { get; set; }
+    }
+
+    public partial class TonQueryAggregateField
+    {
+        [JsonProperty("field")]
+        public string Field { get; set; }
+
+        [JsonProperty("fn")]
+        public TonQueryAggregateFnTypeEnum Fn { get; set; }
+    }
+
+    public partial class TonQueryAggregateParams
+    {
+        [JsonProperty("fields")]
+        public Field[] Fields { get; set; }
+
+        [JsonProperty("filter")]
+        public object Filter { get; set; }
+    }
+
+    public partial class Field
+    {
+        [JsonProperty("field")]
+        public string FieldField { get; set; }
+
+        [JsonProperty("fn")]
+        public TonQueryAggregateFnTypeEnum Fn { get; set; }
+    }
+
+    public partial class TonWaitForParams
+    {
+        [JsonProperty("filter")]
+        public object Filter { get; set; }
+
+        [JsonProperty("operationId", NullValueHandling = NullValueHandling.Ignore)]
+        public string OperationId { get; set; }
+
+        [JsonProperty("result")]
+        public string Result { get; set; }
+
+        [JsonProperty("timeout", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Timeout { get; set; }
+    }
+
+    public partial class TonAccessKeysManagementParams
+    {
+        [JsonProperty("account")]
+        public string Account { get; set; }
+
+        [JsonProperty("accountKeys", NullValueHandling = NullValueHandling.Ignore)]
+        public TonAccessKeysManagementParamsAccountKeys AccountKeys { get; set; }
+
+        [JsonProperty("signedManagementAccessKey", NullValueHandling = NullValueHandling.Ignore)]
+        public string SignedManagementAccessKey { get; set; }
+    }
+
+    public partial class TonAccessKeysManagementParamsAccountKeys
+    {
+        [JsonProperty("public")]
+        public string Public { get; set; }
+
+        [JsonProperty("secret")]
+        public string Secret { get; set; }
+    }
+
+    public partial class TonAccessKeyRestrictions
+    {
+        [JsonProperty("key")]
+        public string Key { get; set; }
+
+        [JsonProperty("restrictToAccounts", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] RestrictToAccounts { get; set; }
+    }
+
+    public partial class TonRegisterAccessKeysParams
+    {
+        [JsonProperty("account")]
+        public string Account { get; set; }
+
+        [JsonProperty("accountKeys", NullValueHandling = NullValueHandling.Ignore)]
+        public TonRegisterAccessKeysParamsAccountKeys AccountKeys { get; set; }
+
+        [JsonProperty("signedManagementAccessKey", NullValueHandling = NullValueHandling.Ignore)]
+        public string SignedManagementAccessKey { get; set; }
+
+        [JsonProperty("keys")]
+        public Key[] Keys { get; set; }
+    }
+
+    public partial class TonRegisterAccessKeysParamsAccountKeys
+    {
+        [JsonProperty("public")]
+        public string Public { get; set; }
+
+        [JsonProperty("secret")]
+        public string Secret { get; set; }
+    }
+
+    public partial class Key
+    {
+        [JsonProperty("key")]
+        public string KeyKey { get; set; }
+
+        [JsonProperty("restrictToAccounts", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] RestrictToAccounts { get; set; }
+    }
+
+    public partial class TonRevokeAccessKeysParams
+    {
+        [JsonProperty("account")]
+        public string Account { get; set; }
+
+        [JsonProperty("accountKeys", NullValueHandling = NullValueHandling.Ignore)]
+        public TonRevokeAccessKeysParamsAccountKeys AccountKeys { get; set; }
+
+        [JsonProperty("signedManagementAccessKey", NullValueHandling = NullValueHandling.Ignore)]
+        public string SignedManagementAccessKey { get; set; }
+
+        [JsonProperty("keys")]
+        public string[] Keys { get; set; }
+    }
+
+    public partial class TonRevokeAccessKeysParamsAccountKeys
+    {
+        [JsonProperty("public")]
+        public string Public { get; set; }
+
+        [JsonProperty("secret")]
+        public string Secret { get; set; }
+    }
+
+    public enum TonEncryptionAlgorithmEnum { NaclBox, NaclSecretBox };
+
+    public enum TonOutputEncodingTypeEnum { Base64, Hex, HexUppercase, Text };
+
+    public enum TonAddressStringVariantTypeEnum { AccountId, Base64, Hex };
+
+    public enum Direction { Asc, Desc };
+
+    public enum TonQueryAggregateFnTypeEnum { Average, Count, Max, Min, Sum };
+
+    internal static class Converter
+    {
+        public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
+        {
+            MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
+            DateParseHandling = DateParseHandling.None,
+            Converters =
+            {
+                TonEncryptionAlgorithmEnumConverter.Singleton,
+                TonOutputEncodingTypeEnumConverter.Singleton,
+                TonAddressStringVariantTypeEnumConverter.Singleton,
+                DirectionConverter.Singleton,
+                TonQueryAggregateFnTypeEnumConverter.Singleton,
+                new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
+            },
+        };
+    }
+
+    internal class TonEncryptionAlgorithmEnumConverter : JsonConverter
+    {
+        public override bool CanConvert(Type t) => t == typeof(TonEncryptionAlgorithmEnum) || t == typeof(TonEncryptionAlgorithmEnum?);
+
+        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+        {
+            if (reader.TokenType == JsonToken.Null) return null;
+            var value = serializer.Deserialize<string>(reader);
+            switch (value)
+            {
+                case "nacl_box":
+                    return TonEncryptionAlgorithmEnum.NaclBox;
+                case "nacl_secret_box":
+                    return TonEncryptionAlgorithmEnum.NaclSecretBox;
+            }
+            throw new Exception("Cannot unmarshal type TonEncryptionAlgorithmEnum");
+        }
+
+        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+        {
+            if (untypedValue == null)
+            {
+                serializer.Serialize(writer, null);
+                return;
+            }
+            var value = (TonEncryptionAlgorithmEnum)untypedValue;
+            switch (value)
+            {
+                case TonEncryptionAlgorithmEnum.NaclBox:
+                    serializer.Serialize(writer, "nacl_box");
+                    return;
+                case TonEncryptionAlgorithmEnum.NaclSecretBox:
+                    serializer.Serialize(writer, "nacl_secret_box");
+                    return;
+            }
+            throw new Exception("Cannot marshal type TonEncryptionAlgorithmEnum");
+        }
+
+        public static readonly TonEncryptionAlgorithmEnumConverter Singleton = new TonEncryptionAlgorithmEnumConverter();
+    }
+
+    internal class TonOutputEncodingTypeEnumConverter : JsonConverter
+    {
+        public override bool CanConvert(Type t) => t == typeof(TonOutputEncodingTypeEnum) || t == typeof(TonOutputEncodingTypeEnum?);
+
+        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+        {
+            if (reader.TokenType == JsonToken.Null) return null;
+            var value = serializer.Deserialize<string>(reader);
+            switch (value)
+            {
+                case "Base64":
+                    return TonOutputEncodingTypeEnum.Base64;
+                case "Hex":
+                    return TonOutputEncodingTypeEnum.Hex;
+                case "HexUppercase":
+                    return TonOutputEncodingTypeEnum.HexUppercase;
+                case "Text":
+                    return TonOutputEncodingTypeEnum.Text;
+            }
+            throw new Exception("Cannot unmarshal type TonOutputEncodingTypeEnum");
+        }
+
+        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+        {
+            if (untypedValue == null)
+            {
+                serializer.Serialize(writer, null);
+                return;
+            }
+            var value = (TonOutputEncodingTypeEnum)untypedValue;
+            switch (value)
+            {
+                case TonOutputEncodingTypeEnum.Base64:
+                    serializer.Serialize(writer, "Base64");
+                    return;
+                case TonOutputEncodingTypeEnum.Hex:
+                    serializer.Serialize(writer, "Hex");
+                    return;
+                case TonOutputEncodingTypeEnum.HexUppercase:
+                    serializer.Serialize(writer, "HexUppercase");
+                    return;
+                case TonOutputEncodingTypeEnum.Text:
+                    serializer.Serialize(writer, "Text");
+                    return;
+            }
+            throw new Exception("Cannot marshal type TonOutputEncodingTypeEnum");
+        }
+
+        public static readonly TonOutputEncodingTypeEnumConverter Singleton = new TonOutputEncodingTypeEnumConverter();
+    }
+
+    internal class TonAddressStringVariantTypeEnumConverter : JsonConverter
+    {
+        public override bool CanConvert(Type t) => t == typeof(TonAddressStringVariantTypeEnum) || t == typeof(TonAddressStringVariantTypeEnum?);
+
+        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+        {
+            if (reader.TokenType == JsonToken.Null) return null;
+            var value = serializer.Deserialize<string>(reader);
+            switch (value)
+            {
+                case "AccountId":
+                    return TonAddressStringVariantTypeEnum.AccountId;
+                case "Base64":
+                    return TonAddressStringVariantTypeEnum.Base64;
+                case "Hex":
+                    return TonAddressStringVariantTypeEnum.Hex;
+            }
+            throw new Exception("Cannot unmarshal type TonAddressStringVariantTypeEnum");
+        }
+
+        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+        {
+            if (untypedValue == null)
+            {
+                serializer.Serialize(writer, null);
+                return;
+            }
+            var value = (TonAddressStringVariantTypeEnum)untypedValue;
+            switch (value)
+            {
+                case TonAddressStringVariantTypeEnum.AccountId:
+                    serializer.Serialize(writer, "AccountId");
+                    return;
+                case TonAddressStringVariantTypeEnum.Base64:
+                    serializer.Serialize(writer, "Base64");
+                    return;
+                case TonAddressStringVariantTypeEnum.Hex:
+                    serializer.Serialize(writer, "Hex");
+                    return;
+            }
+            throw new Exception("Cannot marshal type TonAddressStringVariantTypeEnum");
+        }
+
+        public static readonly TonAddressStringVariantTypeEnumConverter Singleton = new TonAddressStringVariantTypeEnumConverter();
+    }
+
+    internal class DirectionConverter : JsonConverter
+    {
+        public override bool CanConvert(Type t) => t == typeof(Direction) || t == typeof(Direction?);
+
+        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+        {
+            if (reader.TokenType == JsonToken.Null) return null;
+            var value = serializer.Deserialize<string>(reader);
+            switch (value)
+            {
+                case "ASC":
+                    return Direction.Asc;
+                case "DESC":
+                    return Direction.Desc;
+            }
+            throw new Exception("Cannot unmarshal type Direction");
+        }
+
+        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+        {
+            if (untypedValue == null)
+            {
+                serializer.Serialize(writer, null);
+                return;
+            }
+            var value = (Direction)untypedValue;
+            switch (value)
+            {
+                case Direction.Asc:
+                    serializer.Serialize(writer, "ASC");
+                    return;
+                case Direction.Desc:
+                    serializer.Serialize(writer, "DESC");
+                    return;
+            }
+            throw new Exception("Cannot marshal type Direction");
+        }
+
+        public static readonly DirectionConverter Singleton = new DirectionConverter();
+    }
+
+    internal class TonQueryAggregateFnTypeEnumConverter : JsonConverter
+    {
+        public override bool CanConvert(Type t) => t == typeof(TonQueryAggregateFnTypeEnum) || t == typeof(TonQueryAggregateFnTypeEnum?);
+
+        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+        {
+            if (reader.TokenType == JsonToken.Null) return null;
+            var value = serializer.Deserialize<string>(reader);
+            switch (value)
+            {
+                case "AVERAGE":
+                    return TonQueryAggregateFnTypeEnum.Average;
+                case "COUNT":
+                    return TonQueryAggregateFnTypeEnum.Count;
+                case "MAX":
+                    return TonQueryAggregateFnTypeEnum.Max;
+                case "MIN":
+                    return TonQueryAggregateFnTypeEnum.Min;
+                case "SUM":
+                    return TonQueryAggregateFnTypeEnum.Sum;
+            }
+            throw new Exception("Cannot unmarshal type TonQueryAggregateFnTypeEnum");
+        }
+
+        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+        {
+            if (untypedValue == null)
+            {
+                serializer.Serialize(writer, null);
+                return;
+            }
+            var value = (TonQueryAggregateFnTypeEnum)untypedValue;
+            switch (value)
+            {
+                case TonQueryAggregateFnTypeEnum.Average:
+                    serializer.Serialize(writer, "AVERAGE");
+                    return;
+                case TonQueryAggregateFnTypeEnum.Count:
+                    serializer.Serialize(writer, "COUNT");
+                    return;
+                case TonQueryAggregateFnTypeEnum.Max:
+                    serializer.Serialize(writer, "MAX");
+                    return;
+                case TonQueryAggregateFnTypeEnum.Min:
+                    serializer.Serialize(writer, "MIN");
+                    return;
+                case TonQueryAggregateFnTypeEnum.Sum:
+                    serializer.Serialize(writer, "SUM");
+                    return;
+            }
+            throw new Exception("Cannot marshal type TonQueryAggregateFnTypeEnum");
+        }
+
+        public static readonly TonQueryAggregateFnTypeEnumConverter Singleton = new TonQueryAggregateFnTypeEnumConverter();
+    }
+}

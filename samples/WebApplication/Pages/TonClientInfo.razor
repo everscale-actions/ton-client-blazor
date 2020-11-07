@@ -1,0 +1,59 @@
+﻿@page "/ton-client"
+@using ch1seL.TonClientBlazor
+@using ch1seL.WebApplication.Utils
+
+<h1>TON Client</h1>
+<h2>Server info</h2>
+<p>Server Now: @(ServerNow?.ToString("G") ?? "updating...")</p>
+<p>Server Time Delta: @(ServerTimeDelta?.ToString("c") ??"updating...")</p>
+
+<h2>Config</h2>
+<p>Version: @(ConfigVersion ?? "updating...")</p>
+
+<button class="btn btn-primary btn-lg" @onclick="UpdateAll">Update</button>
+
+@code {
+    
+    [Inject]
+    ITonClient TonClient { get; set; }
+    [Inject]
+    IToastService ToastService { get; set; }
+
+    private DateTime? ServerNow { get; set; }
+    private TimeSpan? ServerTimeDelta { set; get; }
+    private string ConfigVersion { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await UpdateAll();
+    }
+
+    private async Task UpdateAll()
+    {
+        await Task.WhenAll(
+            UpdateServerNow(), 
+            UpdateServerTimeDelta(),
+            UpdateConfigVersion());
+    }
+
+    private async Task UpdateServerTimeDelta()
+    {
+        ServerTimeDelta = null;
+        ServerTimeDelta = await TonClient.ServerTimeDelta().CatchJsExceptionAsync(ex => ToastService.ShowError(ex.Message));
+        StateHasChanged();
+    }
+
+    private async Task UpdateServerNow()
+    {
+        ServerNow = null;
+        ServerNow = await TonClient.ServerNow().CatchJsExceptionAsync(ex => ToastService.ShowError(ex.Message));
+        StateHasChanged();
+    }
+    
+    private async Task UpdateConfigVersion()
+    {
+        ConfigVersion = null;
+        ConfigVersion = await TonClient.Config.GetVersion().CatchJsExceptionAsync(ex => ToastService.ShowError(ex.Message));
+        StateHasChanged();
+    }
+}

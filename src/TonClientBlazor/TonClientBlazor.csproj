@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <RootNamespace>ch1seL.TonClientBlazor</RootNamespace>
+        
+        <Authors>Alexander Salamatov</Authors>        
+        <Copyright>Copyright 2020 (c) Alexander Salamatov. All rights reserved.</Copyright>
+
+        <Description>Free TON Client for Blazor</Description>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+        <PackageId>ch1seL.TonClientBlazor</PackageId>
+        <PackageTags>FREETON;TON;Blazored;Blazor;Razor;Components;CSharp;Web</PackageTags>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/ch1seL/TonClientBlazor</PackageProjectUrl>
+        <PackageIcon>icon.png</PackageIcon>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/ch1seL/TonClientBlazor</RepositoryUrl>
+
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\TonClientBlazor.Abstract\TonClientBlazor.Abstract.csproj" />
+      <ProjectReference Include="..\TonClientBlazor.Adapter\TonClientBlazor.Adapter.csproj" />
+      <ProjectReference Include="..\TonClientBlazor.Modules\TonClientBlazor.Modules.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="icon.png" Pack="true" PackagePath="\" />
+    </ItemGroup>
+
+    <Target Name="Build ton web client" BeforeTargets="Build">
+<!--        you can disable build ton-client for testgin -->        
+        <Exec Command="npm install" WorkingDirectory="_jsAdapter" />
+        <Exec Command="npm run build" WorkingDirectory="_jsAdapter" />        
+    </Target>
+        
+</Project>

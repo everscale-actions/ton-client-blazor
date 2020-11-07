@@ -1,0 +1,134 @@
+﻿@page "/contract"
+<ProgressBar TotalSteps="@ProgressTotalSteps" CurrentStep="@ProgressCurrentStep" />
+
+<h1>TON Contract deploy</h1>
+
+@if (KeyPair == null)
+{
+    <div class="row">
+        <div class="col-sm-12 col-lg-6 input-group mb-3">
+          <input type="text" @bind="@Mnemonic" class="form-control" placeholder="Enter master phrase to restore" aria-describedby="button-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-outline-primary" type="button" id="button-addon2" @onclick="Restore">Restore</button>
+          </div>
+        </div>
+    </div>
+    <div class="row pt-3">
+        <div class="col">
+            <p>or generate new public and secret keypair</p>
+        </div>
+    </div>
+    <div class="row pt-3">
+        <div class="col">
+            <button class="btn btn-primary" @onclick="GenerateKeys">Generage public and secret keys</button>
+        </div>
+        <div class="col-6"></div>
+    </div>
+}
+
+@if (KeyPair != null)
+{
+    <div class="row">
+        <div class="col"><b>Attention!</b> Save it if you want access to contract later</div>
+    </div>
+    <div class="row">
+        <div class="col-auto" style="width: 200px">Public key:</div>
+        <div class="col-auto">@KeyPair.Public</div>
+    </div>
+    <div class="row">
+        <div class="col-auto" style="width: 200px">Secret key:</div>
+        <div class="col-auto">@KeyPair.Secret</div>
+    </div>
+    @if (AccountAddress == null)
+    {
+        <div class="row pt-2">
+            <div class="col-auto">
+                <form class="was-validated" >
+                <div class="custom-file">
+                    <InputFile class="custom-file-input" id="validatedCustomFile" required OnChange="LoadContract"/>
+                    <label class="custom-file-label" for="validatedCustomFile">@(FileName ?? "Select contract in js format")</label>
+                </div>
+                </form>
+            </div>
+            @if (FileLoader)
+            {
+                <div class="col-auto">
+                    <div class="lds-ring">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div></div></div>
+            }
+            @if (JsDataUri != null)
+            {
+                <div class="col-auto"><a href="@JsDataUri" onclick="window.openDataUrl(this.href);return false;">Show JS</a></div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-auto" style="width: 200px">Account address:</div>
+            <div class="col-auto">@AccountAddress</div>
+        </div>
+    }
+}
+@if (AccountBalance.HasValue)
+{
+    <div class="row">
+        <div class="col-auto" style="width: 200px">Address balance:</div>
+        <div class="col-auto">@AccountBalance.Value</div>
+    </div>
+}
+@if (JsDataUri != null && AccountAddress==null)
+{
+    <div class="row pt-4 h-auto">
+        <div class="col-auto h-50">
+            <div class="alert alert-info">
+                <span class="align-middle">We are ready for sending deploy message!</span>
+            </div>
+        </div>
+        <div class="col-auto m-1 h-50">
+            <button class="btn btn-dark" @onclick="SendDeployMessage">Send</button>
+        </div>
+    </div>
+}
+
+@if (JsDataUri != null && AccountAddress!=null)
+{
+    <div class="row pt-4 h-auto">
+        @if (SendingGramsSuccess && DeployContractResult){
+            <div class="col-auto w-25 h-50">
+                <div class="alert alert-success">
+                    <span class="align-middle">Well done!</span>
+                </div>
+            </div>
+            <div class="col-auto mt-2">
+                <button class="btn btn-dark" @onclick="Restart">Repeat?</button>
+            </div>
+        }
+        else
+        {
+            <div class="col-auto h-50">
+                <div class="alert alert-info">
+                    <span class="align-middle">We are ready for deploy!</span>
+                </div>
+            </div>
+        }
+        @if (!SendingGramsSuccess)
+        {
+            <div class="col-auto m-1 h-50">
+                <button class="btn btn-dark" @onclick="SendGrams">Send some grams from Giver</button>
+            </div>
+        }
+        else
+        {
+            if (!DeployContractResult)
+            {
+                <div class="col-auto m-1 h-50">
+                    <button class="btn btn-dark" @onclick="Deploy">Deploy contract</button>
+                </div>
+            }
+        }
+    </div>
+}
