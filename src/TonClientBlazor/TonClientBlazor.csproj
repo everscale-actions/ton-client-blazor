@@ -3,25 +3,10 @@
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
         <RootNamespace>ch1seL.TonClientBlazor</RootNamespace>
-        
-        <Authors>Alexander Salamatov</Authors>        
-        <Copyright>Copyright 2020 (c) Alexander Salamatov. All rights reserved.</Copyright>
-
-        <Description>Free TON Client for Blazor</Description>
-        <IncludeSymbols>true</IncludeSymbols>
-        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-
-        <PackageId>ch1seL.TonClientBlazor</PackageId>
-        <PackageTags>FREETON;TON;Blazor;Razor;Components;CSharp;Wasm</PackageTags>
-        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-        <PackageProjectUrl>https://github.com/ch1seL/TonClientBlazor</PackageProjectUrl>
-        <PackageIcon>icon.png</PackageIcon>
-        <RepositoryType>git</RepositoryType>
-        <RepositoryUrl>https://github.com/ch1seL/TonClientBlazor</RepositoryUrl>
-
-        <PublishRepositoryUrl>true</PublishRepositoryUrl>
-        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <AssemblyName>ch1seL.TonClientBlazor</AssemblyName>       
     </PropertyGroup>
+
+    <Import Project="..\..\PackageInfo.targets" />
 
     <ItemGroup>
         <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
