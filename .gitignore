@@ -365,4 +365,4 @@ FodyWeavers.xsd
 .idea
 
 #project
-/src/TonClientBlazor/_jsAdapter/package-lock.json
+/src/TonClientBlazor/wwwroot/

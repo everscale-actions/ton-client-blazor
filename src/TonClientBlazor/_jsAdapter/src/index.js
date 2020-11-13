@@ -2,7 +2,7 @@ import {setWasmOptions, TONClient} from 'ton-client-web-js';
 
 setWasmOptions({    
     debugLog: message=>console.debug(message),    
-    binaryURL: '/_content/TonClientBlazor/js/tonclient.wasm',
+    binaryURL: '/_content/ch1seL.TonClientBlazor/js/tonclient.wasm',
 });
 
 window.createTonClient = async options => {

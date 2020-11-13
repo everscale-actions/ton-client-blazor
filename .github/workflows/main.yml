@@ -31,8 +31,9 @@ jobs:
         dotnet-version: ${{ env.NETCORE_VERSION }}
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        
-    - uses: actions/setup-node@v1
+    
+    - name: Setup Node.Js    
+      uses: actions/setup-node@v1
 
     - name: Restore
       run: dotnet restore

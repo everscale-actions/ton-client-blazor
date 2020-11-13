@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace ch1seL.WebApplication
+namespace WebApplication
 {
     public class Program
     {
@@ -12,7 +12,7 @@ namespace ch1seL.WebApplication
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-            builder.RootComponents.Add<App>("app");
+            builder.RootComponents.Add<App>("#app");
             builder.Logging
                 .SetMinimumLevel(LogLevel.Trace)
                 .AddFilter("Microsoft", LogLevel.Warning);
@@ -23,8 +23,6 @@ namespace ch1seL.WebApplication
                 options.LogVerbose = true;
             });
             builder.Services.AddBlazoredToast();
-            
-            
             
             await builder.Build().RunAsync();
         }

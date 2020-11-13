@@ -1,6 +1,6 @@
 ﻿using ch1seL.TonClientBlazor;
 
-namespace ch1seL.WebApplication
+namespace WebApplication
 {
     public static class Static
     {

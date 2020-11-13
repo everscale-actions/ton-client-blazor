@@ -7,12 +7,12 @@ using ch1seL.TonClientBlazor;
 using ch1seL.TonClientBlazor.Modules.Contract;
 using ch1seL.TonClientBlazor.Modules.Crypto;
 using ch1seL.TonClientBlazor.Modules.Query;
-using ch1seL.WebApplication.Utils;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.JSInterop;
+using WebApplication.Utils;
 
-namespace ch1seL.WebApplication.Pages
+namespace WebApplication.Pages
 {
     public partial class TonContract
     {

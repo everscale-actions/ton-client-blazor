@@ -40,8 +40,8 @@
 
     <Target Name="Build ton web client" BeforeTargets="Build">
 <!--        you can disable build ton-client for testgin -->        
-        <Exec Command="npm install" WorkingDirectory="_jsAdapter" />
-        <Exec Command="npm run build" WorkingDirectory="_jsAdapter" />        
+        <Exec Command="npm ci" WorkingDirectory="_jsAdapter" />
+        <Exec Command="npm run build" WorkingDirectory="_jsAdapter" />      
     </Target>
         
 </Project>

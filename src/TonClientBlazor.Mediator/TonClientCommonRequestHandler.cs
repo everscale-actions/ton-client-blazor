@@ -26,7 +26,7 @@ namespace ch1seL.TonClientBlazor.Mediator
                 jsResponseConverter = null;
             }
 
-            MethodInfo requestMethodInfo = typeof(TonClientAdapter).GetMethod(nameof(_tonClientAdapter.Request))?.MakeGenericMethod(jsResponseType);
+            MethodInfo requestMethodInfo = typeof(ITonClientAdapter).GetMethod(nameof(_tonClientAdapter.Request))?.MakeGenericMethod(jsResponseType);
             Debug.Assert(requestMethodInfo != null, nameof(requestMethodInfo) + " != null");
 
             var task = (Task) requestMethodInfo.Invoke(_tonClientAdapter,

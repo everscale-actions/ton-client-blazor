@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.JSInterop;
 
-namespace ch1seL.WebApplication.Utils
+namespace WebApplication.Utils
 {
     public static class JsRuntimeExtensions
     {
