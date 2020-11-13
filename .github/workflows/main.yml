@@ -106,12 +106,18 @@ jobs:
           echo Version: $VERSION
           VERSION="${VERSION//v}"
           echo Clean Version: $VERSION
-          dotnet pack -v normal -c Release --include-symbols --include-source -p:PackageVersion=$VERSION -o nupkg
+          dotnet pack -v normal -c Release --include-symbols --include-source -p:PackageVersion=$VERSION -o nupkg       
       - name: Push to GitHub Feed
+        working-directory: nupkg
         run: |
-          for f in ./nupkg/*.nupkg
+          for f in *.nupkg
           do
             curl -vX PUT -u "$GITHUB_USER:$GITHUB_TOKEN" -F package=@$f $GITHUB_FEED
-          done
+          done           
       - name: Push to NuGet Feed
-        run: dotnet nuget push ./nupkg/*.nupkg --source $NUGET_FEED --skip-duplicate --api-key $NUGET_KEY
+        working-directory: nupkg
+        run: |
+          for f in *.nupkg
+          do
+            dotnet nuget push @$f --source $NUGET_FEED --skip-duplicate --api-key $NUGET_KEY            
+          done
