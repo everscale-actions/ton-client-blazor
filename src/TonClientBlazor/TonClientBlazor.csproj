@@ -12,7 +12,7 @@
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
 
         <PackageId>ch1seL.TonClientBlazor</PackageId>
-        <PackageTags>FREETON;TON;Blazored;Blazor;Razor;Components;CSharp;Web</PackageTags>
+        <PackageTags>FREETON;TON;Blazor;Razor;Components;CSharp;Wasm</PackageTags>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/ch1seL/TonClientBlazor</PackageProjectUrl>
         <PackageIcon>icon.png</PackageIcon>

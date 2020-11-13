@@ -103,7 +103,7 @@ jobs:
           echo Version: $VERSION
           VERSION="${VERSION//v}"
           echo Clean Version: $VERSION
-          dotnet pack -v normal -c Release --include-symbols --include-source -p:PackageVersion=$VERSION -o nupkg src/Blazored.$PROJECT_NAME/Blazored.$PROJECT_NAME.*proj
+          dotnet pack -v normal -c Release --include-symbols --include-source -p:PackageVersion=$VERSION -o nupkg src/$PROJECT_NAME/$PROJECT_NAME.csproj
       - name: Push to GitHub Feed
         run: |
           for f in ./nupkg/*.nupkg
