@@ -1,0 +1,20 @@
+<Project>
+    <PropertyGroup>
+        <Authors>Alexander Salamatov</Authors>
+        <Copyright>Copyright 2020 (c) Alexander Salamatov. All rights reserved.</Copyright>
+        
+        <Description>Free TON Client for Blazor</Description>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        
+        <PackageTags>FREETON;TON;Blazor;Razor;Components;CSharp;Wasm</PackageTags>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/ch1seL/TonClientBlazor</PackageProjectUrl>
+        <PackageIcon>icon.png</PackageIcon>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/ch1seL/TonClientBlazor</RepositoryUrl>
+        
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    </PropertyGroup>
+</Project>

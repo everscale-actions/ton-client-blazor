@@ -2,7 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
-        <RootNamespace>ch1seL.TonClientModules</RootNamespace>
+        <RootNamespace>ch1seL.TonClientBlazor</RootNamespace>
+        <AssemblyName>ch1seL.TonClientBlazor.Modules</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>
@@ -12,7 +13,7 @@
 
     <ItemGroup>
         <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
-            <_Parameter1>TonClientBlazor</_Parameter1>
+            <_Parameter1>ch1seL.TonClientBlazor</_Parameter1>
         </AssemblyAttribute>
     </ItemGroup>
 

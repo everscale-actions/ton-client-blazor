@@ -22,6 +22,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TonClientBlazor.Utils", "sr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication", "samples\WebApplication\WebApplication.csproj", "{B4EDA8C5-7F82-4501-91A4-A84392F2172B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_CommonTargets", "_CommonTargets", "{6D258042-25EF-481D-BFEE-6EE52322780D}"
+ProjectSection(SolutionItems) = preProject
+	PackageInfo.targets = PackageInfo.targets
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
