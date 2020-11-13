@@ -86,6 +86,7 @@ jobs:
           do
             curl -vX PUT -u "$GITHUB_USER:$GITHUB_TOKEN" -F package=@$f $GITHUB_FEED
           done
+          
   deploy:
     needs: build
     if: github.event_name == 'release'

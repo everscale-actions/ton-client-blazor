@@ -1,12 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
-
+    <Import Project="..\..\PackageInfo.targets" />
+    
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
         <RootNamespace>ch1seL.TonClientBlazor</RootNamespace>
         <AssemblyName>ch1seL.TonClientBlazor</AssemblyName>       
     </PropertyGroup>
-
-    <Import Project="..\..\PackageInfo.targets" />
 
     <ItemGroup>
         <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
@@ -17,10 +16,6 @@
       <ProjectReference Include="..\TonClientBlazor.Abstract\TonClientBlazor.Abstract.csproj" />
       <ProjectReference Include="..\TonClientBlazor.Adapter\TonClientBlazor.Adapter.csproj" />
       <ProjectReference Include="..\TonClientBlazor.Modules\TonClientBlazor.Modules.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <None Include="icon.png" Pack="true" PackagePath="\" />
     </ItemGroup>
 
     <Target Name="Build ton web client" BeforeTargets="Build">

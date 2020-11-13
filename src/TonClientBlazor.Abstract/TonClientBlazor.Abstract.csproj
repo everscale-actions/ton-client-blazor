@@ -1,4 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="..\..\PackageInfo.targets" />
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
@@ -24,6 +25,10 @@
         <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
             <_Parameter1>ch1seL.TonClientBlazor.Mediator</_Parameter1>
         </AssemblyAttribute>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="icon.png" />
     </ItemGroup>
     
 </Project>

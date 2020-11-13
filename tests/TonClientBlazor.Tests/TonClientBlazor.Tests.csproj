@@ -4,6 +4,8 @@
         <TargetFramework>net5.0</TargetFramework>
         <RootNamespace>ch1seL.TonClientBlazor.Tests</RootNamespace>
         <OutputType>Library</OutputType>
+        <IsPackable>false</IsPackable>
+        <IsTestProject>false</IsTestProject>
     </PropertyGroup>
 
     <ItemGroup>
