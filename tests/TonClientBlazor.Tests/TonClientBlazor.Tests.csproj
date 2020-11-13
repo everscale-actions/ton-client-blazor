@@ -2,7 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
-        <RootNamespace>ch1seL,TonClientBlazor.Tests</RootNamespace>
+        <RootNamespace>ch1seL.TonClientBlazor.Tests</RootNamespace>
+        <OutputType>Library</OutputType>
     </PropertyGroup>
 
     <ItemGroup>

@@ -13,4 +13,16 @@
       <ProjectReference Include="..\TonClientBlazor.Domain\TonClientBlazor.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+            <_Parameter1>TonClientBlazor</_Parameter1>
+        </AssemblyAttribute>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+            <_Parameter1>TonClientBlazor.Adapter</_Parameter1>
+        </AssemblyAttribute>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+            <_Parameter1>TonClientBlazor.Mediator</_Parameter1>
+        </AssemblyAttribute>
+    </ItemGroup>
+    
 </Project>

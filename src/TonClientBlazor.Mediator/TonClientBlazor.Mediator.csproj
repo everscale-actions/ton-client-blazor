@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>netstandard2.1</TargetFramework>
         <RootNamespace>ch1seL.TonClientBlazor.Mediator</RootNamespace>
     </PropertyGroup>
 
@@ -15,7 +15,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\TonClientBlazor.Adapter\TonClientBlazor.Adapter.csproj" />
+      <ProjectReference Include="..\TonClientBlazor.Abstract\TonClientBlazor.Abstract.csproj" />
       <ProjectReference Include="..\TonClientBlazor.Domain\TonClientBlazor.Domain.csproj" />
     </ItemGroup>
 

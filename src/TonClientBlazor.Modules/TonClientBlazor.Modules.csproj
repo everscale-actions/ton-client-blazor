@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>netstandard2.1</TargetFramework>
         <RootNamespace>ch1seL.TonClientModules</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\TonClientBlazor.Domain\TonClientBlazor.Domain.csproj" />
-      <ProjectReference Include="..\TonClientBlazor.Mediator\TonClientBlazor.Mediator.csproj" />
+      <ProjectReference Include="..\TonClientBlazor.Mediator\TonClientBlazor.Mediator.csproj" />      
     </ItemGroup>
 
     <ItemGroup>
