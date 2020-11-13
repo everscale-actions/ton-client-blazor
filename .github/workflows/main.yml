@@ -119,5 +119,6 @@ jobs:
         run: |
           for f in *.nupkg
           do
-            dotnet nuget push @$f --source $NUGET_FEED --skip-duplicate --api-key $NUGET_KEY            
+            echo $f
+            dotnet nuget push $f --source $NUGET_FEED --skip-duplicate --api-key $NUGET_KEY            
           done
