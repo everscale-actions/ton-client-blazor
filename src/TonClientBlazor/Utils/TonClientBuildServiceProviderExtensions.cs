@@ -13,7 +13,7 @@ namespace ch1seL.TonClientBlazor.Utils
 {
     internal static class TonClientBuildServiceProviderExtensions
     {
-        public static ServiceProvider BuildServiceProvider(this IServiceProvider serviceProvider)
+        public static ServiceProvider BuildTonClientServiceProvider(this IServiceProvider serviceProvider)
         {
             return new ServiceCollection()
                 .AddLogging()

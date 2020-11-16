@@ -15,7 +15,7 @@ namespace ch1seL.TonClientBlazor
 
         public TonClient(IServiceProvider serviceProvider)
         {
-            _serviceProvider = serviceProvider.BuildServiceProvider();
+            _serviceProvider = serviceProvider.BuildTonClientServiceProvider();
             _mediator = _serviceProvider.GetRequiredService<IMediator>();
             Crypto = _serviceProvider.GetRequiredService<ITonCryptoModule>();
             Config = _serviceProvider.GetRequiredService<ITonConfigModule>();
