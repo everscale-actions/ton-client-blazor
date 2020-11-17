@@ -9,10 +9,10 @@
         
         <PackageTags>FREETON;TON;Blazor;Razor;Components;CSharp;Wasm</PackageTags>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-        <PackageProjectUrl>https://github.com/ch1seL/TonClientBlazor</PackageProjectUrl>
+        <PackageProjectUrl>https://github.com/ton-actions/ton-client-blazor</PackageProjectUrl>
         <PackageIcon>icon.png</PackageIcon>
         <RepositoryType>git</RepositoryType>
-        <RepositoryUrl>https://github.com/ch1seL/TonClientBlazor</RepositoryUrl>
+        <RepositoryUrl>https://github.com/ton-actions/ton-client-blazor</RepositoryUrl>
         
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
