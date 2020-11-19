@@ -6,7 +6,9 @@
 This is amazing! Blazor in love with Free TON now!
 
 Do you want build client web apps with C#? 
+
 Revolution is comming. Microsoft .NET Conf 2020 includes about fifteen presentation connected with Blazor and Blazor Webassembly. 
+
 And now we can connect it with Free TON network 🌟
 
 # Usage
