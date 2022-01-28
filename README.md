@@ -1,6 +1,12 @@
 ![Main workflow](https://github.com/ton-actions/ton-client-blazor/workflows/Main%20workflow/badge.svg)
 [<img src="https://avatars3.githubusercontent.com/u/67861283?s=150&u=4536b61595a1b422604fab8a7012092d891278f6&v=4" align="right" width="150">](https://freeton.org/)
 
+# ⚠️ The project is no longer supported ⚠️
+
+This is package is depricated take a look for Everscale .Net with Blazor WASM Adpater 
+
+https://github.com/everscale-actions/everscale-dotnet
+
 # TonClientBlazor
 
 This is amazing! Blazor in love with Free TON now!
